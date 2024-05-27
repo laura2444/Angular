@@ -1,0 +1,126 @@
+<div class="container">
+    <p>heroe-edit works!</p>
+
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+        
+        <!--
+        <div class="mb-3">
+            <label for="exampleInputId" class="form-label">ID</label>
+            <input 
+                   [(ngModel)]="unHeroe._id" 
+                   name="id" 
+                   type="text" 
+                   class="form-control" 
+                   id="exampleId" 
+                   aria-describedby="emailHelp"
+                   placeholder="Id" 
+                   required
+                   disabled>
+            <div id="emailHelp" 
+                  class="form-text">Este es el ID Mongo
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputNombre" class="form-label">Nombre</label>
+            <input 
+                   [(ngModel)]="unHeroe.nombre" 
+                   name="nombre" 
+                   type="text" 
+                   class="form-control" 
+                   id="exampleNombre" 
+                   aria-describedby="nombreHelp"
+                   placeholder="Nombre" 
+                   required>
+            <div id="nombreHelp" class="form-text">
+                Nombre Heroe
+            </div>
+        </div>
+        -->
+        <div class="form-group">
+            <label><b>ID</b></label>
+            <input
+              [(ngModel)]="unHeroe._id"
+              name="id"
+              type="text"
+              class="form-control"
+              placeholder="Id"
+              required
+              disabled
+            />
+          </div>
+  
+  
+          <div class="form-group">
+            <label><b>Nombre</b></label>
+            <input
+              [(ngModel)]="unHeroe.nombre"
+              name="nombre"
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+  
+  
+         
+          <div class="form-group">
+            <label><b>Biografia</b></label>
+            <textarea
+              [(ngModel)]="unHeroe.bio"
+              name="bio"
+              type="text"
+              class="form-control"
+              placeholder="Bio"
+              required
+              rows="4"
+              cols="60"
+            >
+            </textarea>
+          </div>
+  
+  
+          <div class="form-group">
+            <label><b>Imagen</b></label>
+            <input
+              [(ngModel)]="unHeroe.img"
+              name="img"
+              type="text"
+              class="form-control"
+              placeholder="Imagen"
+              required
+            />
+            <img [src]="unHeroe.img" class="img-thumb" />
+          </div>
+  
+  
+          <div class="form-group">
+            <label><b>Aparicion</b></label>
+            <input
+              [(ngModel)]="unHeroe.aparicion"
+              name="aparicion"
+              type="text"
+              class="form-control"
+              placeholder="Aparicion"
+              required
+            />
+          </div>
+  
+  
+          <div class="form-group">
+            <label><b>Casa</b></label>
+            <input
+              [(ngModel)]="unHeroe.casa"
+              name="casa"
+              type="text"
+              class="form-control"
+              placeholder="Casa"
+              required
+            />
+          </div>
+  
+
+        <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

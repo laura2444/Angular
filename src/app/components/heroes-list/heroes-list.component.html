@@ -1,0 +1,78 @@
+<p>heroes-list works!</p>
+
+<!--Selectores-->
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group me-2" role="group" aria-label="First group">
+      <button [routerLink]="['/home']" class="btn btn-outline-danger">
+        <i class="fa fa-undo"></i>
+        Regresar
+      </button>
+    </div>
+ 
+    <div class="btn-group" role="group" aria-label="Third group">
+      <button [routerLink]="['/heroeedit', 'nuevo']" type="button" class="btn btn-outline-success"> <!--forma de hacer enrutamiento-->
+        <i class="fa fa-plus"></i>
+        Nuevo Heroe
+      </button>
+    </div>
+  </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">img</th>
+            <!--<th scope="col">bio</th>-->
+            <th scope="col">Casa</th>
+            <th scope="col">accion</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let heroe of Heroes; let i= index"> <!--ngfor para recorrer la lista de heroes-->
+            <th scope="row">{{i+1}}</th>
+            <td>{{heroe.nombre}}</td>
+            <td><img [src]="heroe.img" class="img-thumb" alt="..."></td> <!--Thumb para que la imagen se vea un poco mas pequeña, ademas de esto el css de 90px -->
+            <!--<td>{{heroe.bio}}</td>-->
+            <td>{{heroe.casa}}</td>
+
+
+            <!--Nuevo td para definir las acciones de Eliminar, Editar y Editar Fotos. CRUD : Delete, Update--> 
+            
+            <!--(click) : evento, cuando haga click va a llamar a metodo eliminar, o editar heroe PARA CADA HEROE POR SEPARADO, PONER ACCIONES A MI COMPONENTE-->
+            <td>
+                <button
+                  (click)="eliminarHeroe(heroe)" 
+                  type="button"
+                  class="btn btn-outline-danger btn-block"
+                >
+                  <i class="fa fa-trash"></i>
+                  Eliminar
+                </button>
+                <button
+                  (click)="editarHeroe(heroe._id)"
+                  type="button"
+                  class="btn btn-outline-success btn-block"
+                >
+                  <i class="fa fa-edit"></i>
+      
+      
+                  Editar
+                </button>
+
+                <!--
+                <button
+                  (click)="editarFotos(heroe._id)"
+                  type="button"
+                  class="btn btn-outline-primary btn-block"
+                >
+                  <i class="fa fa-image"></i>
+                  Fotos Heroe
+                </button>
+                -->
+              </td>
+      
+        </tr>
+    </tbody>
+</table>
