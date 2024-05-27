@@ -9,9 +9,5 @@ nuestros servicios estan de forma local
 export const URL_SERVICIOS= "http://localhost/8080/api"; 
 
 
-//crear la conexion a nuestra API REST publica- podria ser en railway
-//para PRODUCCION
-export const URL_SERVICIOS_MONGODB= "https://rest-sorella-production.up.railway.app/api";
-// "https://rest-sorella-production.up.railway.app/api"      del profesor publicada en railway
 
 
