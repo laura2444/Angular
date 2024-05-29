@@ -26,7 +26,7 @@ export class HeroeEditComponent {
    unaAccion: string = 'Mensaje';
    unMensaje: string = '';
  
-  constructor(
+  constructor( //ACÁ ES COMO LOGRO OBTENER LA INFORMACIÓN DE OTRO PARTE
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private dataBD: MongoDBService

@@ -24,9 +24,9 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">img</th>
-            <!--<th scope="col">bio</th>-->
+            <th scope="col">bio</th>
             <th scope="col">Casa</th>
-            <th scope="col">accion</th>
+            <th scope="col">Fecha De Salida</th>
           </tr>
     </thead>
     <tbody>
@@ -34,10 +34,10 @@
             <th scope="row">{{i+1}}</th>
             <td>{{heroe.nombre}}</td>
             <td><img [src]="heroe.img" class="img-thumb" alt="..."></td> <!--Thumb para que la imagen se vea un poco mas pequeña, ademas de esto el css de 90px -->
-            <!--<td>{{heroe.bio}}</td>-->
+            <td>{{heroe.bio}}</td>
             <td>{{heroe.casa}}</td>
-
-
+            <td>{{heroe.aparicion}}</td>
+            
             <!--Nuevo td para definir las acciones de Eliminar, Editar y Editar Fotos. CRUD : Delete, Update--> 
             
             <!--(click) : evento, cuando haga click va a llamar a metodo eliminar, o editar heroe PARA CADA HEROE POR SEPARADO, PONER ACCIONES A MI COMPONENTE-->

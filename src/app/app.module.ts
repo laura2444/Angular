@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';  
 import { FormsModule } from '@angular/forms';
+import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/multimedia-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     HeroesListComponent,
     HeroeEditComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    MultimediaPeliculaComponent
   ],
   imports: [     /*modulos a importar en nuestro proyecto */
     BrowserModule,

@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
 import { HeroeEditComponent } from './components/heroe-edit/heroe-edit.component';
+import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/multimedia-pelicula.component';
 
 const routes: Routes = [
   {path: 'hogar',component: HomeComponent},
   {path: 'home',component: HomeComponent},
   {path: 'heroes',component: HeroesListComponent},
   {path: 'heroeedit/:idheroe',component: HeroeEditComponent},
+  {path: 'multimediaPelicula',component: MultimediaPeliculaComponent},
+  
 
 
   {path: '**',pathMatch: 'full',redirectTo: 'home'}

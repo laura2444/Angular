@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+      <ng-container *ngFor="let multimedia of MultimediaPeliculas; let i = index">
+        <div class="col mb-4">
+          <div class="card h-100">
+            
+            <div class="card-body">
+              <h5 class="card-title">{{ multimedia.peliculas_id.titulo }}</h5>
+              <p class="card-text">{{ multimedia.imagenes_id.descripcion }}</p>
+              <!-- Puedes agregar cualquier otra información adicional que desees mostrar -->
+              <img [src]="multimedia.imagenes_id.url" class="card-img-top" alt="...">
+              <p class="card-text" style="font-size: small; text-align: right;">
+                {{ multimedia.peliculas_id.fecha_lanzamiento | date:'yyyy-MM-dd' }}
+              </p>
+              
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-sm btn-outline-primary w-50" (click)="editarMultimedia(multimedia)">Editar</button>
+                <button type="button" class="btn btn-sm btn-outline-danger w-50" (click)="eliminarMultimedia(multimedia._id)">Eliminar</button>
+                <button type="button" class="btn btn-sm btn-outline-success w-50 centered-button" (click)="imagenesPeliculas(multimedia.imagenes_id._id)">Imagenes</button>
+            </div>        
+          </div>
+        </div>
+        <div class="col mb-4" *ngIf="i % 4 === 3 || i === MultimediaPeliculas.length - 1"></div>
+      </ng-container>
+    </div>
+  </div>
+  

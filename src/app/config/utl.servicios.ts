@@ -6,7 +6,7 @@ nuestros servicios estan de forma local
 */
 
 //para desarrollo
-export const URL_SERVICIOS= "http://localhost/8080/api"; 
+export const URL_SERVICIOS= "http://localhost:4000"; 
 
 
 
