@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';  
 import { FormsModule } from '@angular/forms';
 import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/multimedia-pelicula.component';
+import { MultimediaComponent } from './components/multimedia-edit/multimedia.component';
+import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/mu
     HeroeEditComponent,
     NavbarComponent,
     HomeComponent,
-    MultimediaPeliculaComponent
+    MultimediaPeliculaComponent,
+    MultimediaComponent,
+    MultimediaListaComponent
   ],
   imports: [     /*modulos a importar en nuestro proyecto */
     BrowserModule,

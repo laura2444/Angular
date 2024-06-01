@@ -37,14 +37,14 @@ export class MultimediaPeliculaComponent {
   }
   
   editarMultimedia(Multimedia:any){
-
+    
   }
 
   eliminarMultimedia(idMultimedia:any){
 
   }
 
-  imagenesPeliculas(idImagenes: any){
-    
+  imagenesPeliculas(idImagen: any){
+  this.router.navigate(['/multimedia', idImagen]);
   }
 }

@@ -132,6 +132,18 @@ getMultimediaPeliculas(): any {
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////DANIEL TAMARA RIVERA
+//ACCESO A MULTIMEDIA 
+
+getUnMultimediaID(idMultimedia:string):any{
+  console.log("Get multimedia")
+  let url = `${URL_SERVICIOS}/multimedia/obtener/${idMultimedia}`;
+  return this.http.get<any>(url).pipe(
+    map((data) => {
+      console.log('DATA INDEPENDIENTE', data);
+      return data;  })
+  );
+}
 
 
 
