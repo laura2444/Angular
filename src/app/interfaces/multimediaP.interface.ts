@@ -3,6 +3,7 @@ export interface MultimediaPelicula {
     peliculas_id: {
       _id: string;
       titulo: string;
+      fecha_lanzamiento: string;
     };
     imagenes_id: {
       _id: string;

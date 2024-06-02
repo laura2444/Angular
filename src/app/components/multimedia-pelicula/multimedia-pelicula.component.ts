@@ -1,50 +1,72 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MongoDBService } from '../../services/mongo-db.service';
 import { Router } from '@angular/router';
 import { MultimediaPelicula } from '../../interfaces/multimediaP.interface';
 
-
 @Component({
   selector: 'app-multimedia-pelicula',
   templateUrl: './multimedia-pelicula.component.html',
-  styleUrl: './multimedia-pelicula.component.css'
+  styleUrls: ['./multimedia-pelicula.component.css']
 })
-export class MultimediaPeliculaComponent {
+export class MultimediaPeliculaComponent implements OnInit {
 
-  MultimediaPeliculas!: any;  
-
-  unResultado!:any;
-  unaAccion: string = 'Mensaje';
-  unMensaje: string = '';
+  MultimediaPeliculas!: MultimediaPelicula[];
+  peliculaSeleccionada: string = '';
+  titulosUnicos: string[] = [];
 
   constructor(
-    private dataBD:MongoDBService,
-    private router: Router, //permite hacer los enrutamientos del angular router
-  ){}
+    private dataBD: MongoDBService,
+    private router: Router
+  ) { }
 
-  ngOnInit(){
-    this.cargarHeroesBD(); 
+  ngOnInit() {
+    this.cargarMultimediaPelicula();
   }
 
-  async cargarHeroesBD() {
+  async cargarMultimediaPelicula() {
     try {
       const data = await this.dataBD.getMultimediaPeliculas().toPromise();
       this.MultimediaPeliculas = data.resp;
+      this.generarTitulosUnicos();
       console.log(this.MultimediaPeliculas);
     } catch (error) {
       console.error('Error al cargar datos:', error);
     }
   }
-  
-  editarMultimedia(Multimedia:any){
-    
+
+  generarTitulosUnicos() {
+    const titulosSet = new Set<string>();
+    this.MultimediaPeliculas.forEach(multimedia => {
+      titulosSet.add(multimedia.peliculas_id.titulo);
+    });
+    this.titulosUnicos = Array.from(titulosSet);
   }
 
-  eliminarMultimedia(idMultimedia:any){
-
+  editarMultimedia(multimedia: MultimediaPelicula) {
+    // Implementar lógica para editar multimedia
   }
 
-  imagenesPeliculas(idImagen: any){
-  this.router.navigate(['/multimedia', idImagen]);
+  eliminarMultimedia(idMultimedia: string) {
+    // Implementar lógica para eliminar multimedia
   }
+
+  imagenesPeliculas(idImagen: string) {
+    this.router.navigate(['/multimedia', idImagen]);
+  }
+
+  async clasificarPeliculas() {
+    if (this.peliculaSeleccionada != '') {
+      try {
+        const data = await this.dataBD.getMultimediaPeliculasTitulo(this.peliculaSeleccionada).toPromise();
+        this.MultimediaPeliculas = data.resp;
+        console.log(this.MultimediaPeliculas);
+      } catch (error) {
+        console.error('Error al cargar datos:', error);
+      }
+    } else {
+      // Si no hay selección, cargar todas las películas nuevamente
+      this.cargarMultimediaPelicula();
+    }
+  }
+
 }

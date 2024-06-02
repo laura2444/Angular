@@ -133,6 +133,21 @@ getMultimediaPeliculas(): any {
 }
 
 
+
+getMultimediaPeliculasTitulo(titulo: string): any {
+  let url = `${URL_SERVICIOS}/multimediaP/titulo/${titulo}`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('Peliculas con clasificación: ', data); 
+      return data;  
+    })
+  );
+}
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////DANIEL TAMARA RIVERA
 //ACCESO A MULTIMEDIA 
 
@@ -170,13 +185,10 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
 
 
   if(unaAccion === 'modificar'){
-    let parametros = new HttpParams();
+    
     console.log('Datos antes de actualizar:', multimedia);
 
     let url = `${URL_SERVICIOS}/multimedia/actualizar/${multimedia._id}`;
-
-    parametros = parametros.append('descripcion', multimedia.descripcion);
-    parametros = parametros.append('url', multimedia.url);
 
     const body = {
       descripcion:multimedia.descripcion,

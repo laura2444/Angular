@@ -23,6 +23,8 @@ export class MultimediaComponent {
   unaAccion: string = 'Mensaje';
   unMensaje: string = '';
 
+
+
   constructor(
     private activatedRoute: ActivatedRoute, //Con esta libreria es como se obtiene la información de otra parte(COMPONENTE MULTIMEDIAPELICULA)
     private router: Router,
@@ -85,7 +87,7 @@ actualizarMultimedia() {
 
         this.router.navigate(['/home']);
       } else if (res && res.Ok) {
-        this.unResultado = res.resp;
+        this.unResultado = res.resp;  
 
         this.unaAccion = 'Mensaje:';
         this.unMensaje = 'Datos actualizados correctamente.';
