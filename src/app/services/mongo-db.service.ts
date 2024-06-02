@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Heroe } from '../interfaces/heroe.interface';
+import { Multimedia } from '../interfaces/multimedia.interface';
 import { URL_SERVICIOS } from '../config/utl.servicios';
 import { map } from 'rxjs';
 
@@ -145,6 +146,45 @@ getUnMultimediaID(idMultimedia:string):any{
   );
 }
 
+crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
+
+  if ( unaAccion === 'insertar'){
+    let parametros = new HttpParams();
+
+    let url = `${URL_SERVICIOS}/crearMultimedia`;
+
+    parametros = parametros.append('descripcion', multimedia.descripcion);
+    parametros = parametros.append('url', multimedia.url);
+
+    
+    const body = {
+      descripcion:multimedia.descripcion,
+      url:multimedia.url,
+    };
+
+    return this.http.post(url, body).pipe(map((data) => data));
+
+  }
+
+
+  if(unaAccion === 'modificar'){
+    let parametros = new HttpParams();
+
+    let url = `${URL_SERVICIOS}/multimedia/actualizar/${multimedia._id}`;
+
+    parametros = parametros.append('descripcion', multimedia.descripcion);
+    parametros = parametros.append('url', multimedia.url);
+
+    const body = {
+      descripcion:multimedia.descripcion,
+      url:multimedia.url,
+    };
+
+    return this.http.put(url, body).pipe(map((data) => data));
+
+  }
+
+}
 
 
 

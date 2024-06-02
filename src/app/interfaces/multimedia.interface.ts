@@ -1,5 +1,5 @@
 export interface Multimedia{
-    _id?:String;
-    descripcion:String;
-    url:String;    
+    _id?:string;
+    descripcion:string;
+    url:string;    
 }

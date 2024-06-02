@@ -46,9 +46,12 @@ export class MultimediaComponent {
     .toPromise()
     .then((data:any) => {
       this.unMultimedia = data.resp;
-      console.log("algo")
-      console.log(this.unMultimedia)
+
     });
+  }
+
+  actualizarMultimedia(){
+    
   }
 
 
