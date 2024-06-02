@@ -154,13 +154,15 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
     let url = `${URL_SERVICIOS}/crearMultimedia`;
 
     parametros = parametros.append('descripcion', multimedia.descripcion);
-    parametros = parametros.append('url', multimedia.url);
+    parametros = parametros.append('url', multimedia.url); 
 
     
     const body = {
       descripcion:multimedia.descripcion,
       url:multimedia.url,
     };
+
+      console.log(body)
 
     return this.http.post(url, body).pipe(map((data) => data));
 
@@ -169,6 +171,7 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
 
   if(unaAccion === 'modificar'){
     let parametros = new HttpParams();
+    console.log('Datos antes de actualizar:', multimedia);
 
     let url = `${URL_SERVICIOS}/multimedia/actualizar/${multimedia._id}`;
 
@@ -179,8 +182,22 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
       descripcion:multimedia.descripcion,
       url:multimedia.url,
     };
+    console.log(body)
 
     return this.http.put(url, body).pipe(map((data) => data));
+
+  }
+
+  if(unaAccion === 'eliminar'){
+    let parametros2 = new HttpParams();
+
+      let url = `${URL_SERVICIOS}/multimedia/eliminar/${multimedia._id}`;
+
+      return this.http.delete(url).pipe(
+        map((data) => {
+          return data;
+        })
+      );
 
   }
 
