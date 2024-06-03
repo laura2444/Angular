@@ -42,55 +42,39 @@ async cargarHeroesBD(){ //metodo asincrono
     console.log(this.Heroes)
   });
 
-
-
 }
 
 editarHeroe(unIdHeroe:any){
   this.router.navigate(['/heroeedit', unIdHeroe]);
 }
 
-eliminarHeroe(unHeroe: any) {
-  //console.log(this.unaDivision);
-  this.dataBD.crud_Heroes(unHeroe, 'eliminar').subscribe(
+
+ eliminarHeroe(unHeroe: any) {
+  if (!unHeroe && !unHeroe.data){
+    console.log("No hay información para eliminar al héroe.");
+  }
+   this.dataBD.crud_Heroes(unHeroe, 'eliminar').subscribe(
     (res: any) => {
       this.unResultado = res;
 
-      //console.log(this.unResultado);
-      if (this.unResultado.Ok == true) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Information',
+        text: 'Heroe Eliminado',
+      });
+      this.unaAccion = 'Mensaje:';
+      this.unMensaje = 'Heroe Eliminado';
+      setTimeout(() => (this.unMensaje = ''), 3000);
 
-         Swal.fire({
-          icon: 'info',
-          title: 'Information',
-          text: 'Heroe Eliminado',
-        });
+      this.cargarHeroesBD() ;
+      this.router.navigate(['/heroes']);
 
-        this.unaAccion = 'Mensaje:';
-        this.unMensaje = 'Heroe Eliminado';
-        setTimeout(() => (this.unMensaje = ''), 3000);
-
-
-        this.cargarHeroesBD() ;
-
-      } else {
-        Swal.fire({
-          icon: 'info',
-          title: 'Information',
-          text: this.unResultado.msg,
-        });
-  
-
-        this.unaAccion = 'Error:';
-        this.unMensaje = this.unResultado.msg;
-        setTimeout(() => (this.unMensaje = ''), 3000);
-      }
     }
     ,(error:any) => {
       console.error(error)
     }
   );
 }
-
 
 editarFotos(unHeroe:any){
 

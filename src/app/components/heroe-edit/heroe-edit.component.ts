@@ -58,17 +58,10 @@ export class HeroeEditComponent {
   guardar(){
     console.log("Se envio Guardar");
     if (this.idHeroe == 'nuevo') {
-
       this.nuevoHeroe();
-
     } else {
-
       this.actualizarHeroe();
-
     }
-
-
-
   }
 
   actualizarHeroe() {
@@ -78,8 +71,14 @@ export class HeroeEditComponent {
         this.unResultado = res;
 
         console.log('RESULTADO_ACTUALIZAR', this.unResultado);
+/*
+se asegura que res tenga algun valor antes de ingresar, y que ademas contenga la data dentro del res
 
-        if (this.unResultado.Ok == true) {
+res: objeto de respuesta completo despues de realizar la solicitud http incluyendo ademas de la data, status y todas esas cosas
+data: contiene los datos especificos del heroe que se va a actualizar, id, nombre, ....
+*/ 
+        if (this.unResultado && this.unResultado.data) {  
+          console.log("res",res)
           this.unaAccion = 'Mensaje:';
           this.unMensaje = this.unResultado.msg;
           setTimeout(() => (this.unMensaje = ''), 3000);
@@ -90,7 +89,7 @@ export class HeroeEditComponent {
             text: this.unResultado.msg,
           });
 
-          this.router.navigate(['/heroes']);
+          this.router.navigate(['/heroes/']);
         } else {
           this.unaAccion = 'Error:';
           this.unMensaje = this.unResultado.error.msg;
@@ -110,7 +109,7 @@ export class HeroeEditComponent {
 
         console.log('RESULTADO_NUEVO', this.unResultado);
 
-        if (this.unResultado.Ok == true) {
+        if (this.unResultado && this.unResultado.data) {
           Swal.fire({
             icon: 'info',
             title: 'Information',
@@ -133,6 +132,9 @@ export class HeroeEditComponent {
       }
     );
   }
+
+
+  
 
 
 

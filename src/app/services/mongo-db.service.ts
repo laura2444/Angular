@@ -30,7 +30,7 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
   //metodo 2 - TRAER UN solo HEROE POR ID PETICION GET
 
   getUnHeroe(unId:string): any{  //retorno lista de heroes
-    let url = `${URL_SERVICIOS}/Heroes/${unId}`   
+    let url = `${URL_SERVICIOS}/heroes/${unId}`   
 
     return this.http.get(url).pipe( //Realiza una solicitud HTTP GET a la URL especificada, llamo a pipe para usar map
       map((data) =>{
@@ -47,7 +47,7 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
     if (unaAccion === 'eliminar') {
       let parametros2 = new HttpParams();
 
-      let url = `${URL_SERVICIOS}/eliminarHeroe/${unHeroe._id}`;
+      let url = `${URL_SERVICIOS}/heroes/eliminarHeroe/${unHeroe._id}`;
 
       return this.http.delete(url).pipe(
         map((data) => {
@@ -56,17 +56,9 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
       );
     }
 
-    /*
-    nombre: string;
-    bio: string;
-    img: string;
-    aparicion: string;
-    casa: string;
-    _id?: string;
-    */
     if (unaAccion === 'insertar') {
       let parametros2 = new HttpParams();
-      let url = URL_SERVICIOS+ '/heroes';
+      let url = URL_SERVICIOS+ '/heroes/crearHeroe';
 
       // Begin assigning parameters
       parametros2 = parametros2.append('nombre',unHeroe.nombre);
@@ -89,7 +81,7 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
     if (unaAccion === 'modificar') {
       let parametros = new HttpParams();
 
-      let url = `${URL_SERVICIOS}/heroes/${unHeroe._id}`;
+      let url = `${URL_SERVICIOS}/heroes/moficarHeroe/${unHeroe._id}`;
 
       //let url = URL_SERVICIOS_MONGODB + '/heroes';
 
