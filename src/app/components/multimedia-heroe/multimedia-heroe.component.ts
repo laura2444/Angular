@@ -58,6 +58,10 @@ export class MultimediaHeroeComponent implements OnInit {
 
   }
 
+  imagenesHeroes(idImagen: string) {
+    this.router.navigate(['/multimedia', idImagen]);
+  }
+
 
 
 }
