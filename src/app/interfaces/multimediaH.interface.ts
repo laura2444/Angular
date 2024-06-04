@@ -10,3 +10,9 @@ export interface MultimediaHeroe {
       url:string
     };
   }
+
+export interface MultimediaHeroeSolo {
+  _id: string;
+  heroes_id: string;
+  imagenes_id: string;
+}

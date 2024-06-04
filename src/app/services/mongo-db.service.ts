@@ -6,6 +6,7 @@ import { MultimediaPelicula, MultimediaPeliculaSolo } from '../interfaces/multim
 import { Pelicula } from '../interfaces/pelicula.interface';
 import { URL_SERVICIOS } from '../config/utl.servicios';
 import { map } from 'rxjs';
+import { MultimediaHeroe } from '../interfaces/multimediaH.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -195,6 +196,21 @@ getMultimediaHeroes(heroes_id: string): any {
       return data;  
     })
   );
+}
+
+crudMultimediaHeroes(unmultimediaHeroe:MultimediaHeroe,unaAccion: string):any{
+  if (unaAccion=="eliminar"){
+    console.log(unmultimediaHeroe)
+    let url= `${URL_SERVICIOS}/multimediaH/eliminar/${unmultimediaHeroe._id}`
+    return this.http.delete(url).pipe(
+      map((data)=>{
+        console.log('eliminado', data)
+        return data
+      })
+    );
+  }
+
+
 }
 
 
