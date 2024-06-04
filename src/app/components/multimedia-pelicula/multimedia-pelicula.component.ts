@@ -117,12 +117,13 @@ export class MultimediaPeliculaComponent implements OnInit {
         const data = await this.dataBD.getMultimediaPeliculasTitulo(this.peliculaSeleccionada).toPromise();
         this.MultimediaPeliculas = data.resp;
         console.log(this.MultimediaPeliculas);
+
       } catch (error) {
         console.error('Error al cargar datos:', error);
       }
     } else {
-      // Si no hay selección, cargar todas las películas nuevamente
-      this.cargarMultimediaPelicula();
+        this.cargarMultimediaPelicula();
+
     }
   }
 }

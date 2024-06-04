@@ -1,8 +1,5 @@
 <div class="container mt-4">
 
-  <div class="mb-3">
-    <button type="button" class="btn btn-primary" (click)="cargarMultimediaHeroe()">Crear Multimedia Heroe</button>
-  </div>
 
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <ng-container *ngFor="let multimedia of MultimediaHeroes; let i = index">
@@ -25,4 +22,36 @@
       <div class="col mb-4" *ngIf="i % 4 === 3 || i === MultimediaHeroes.length - 1"></div>
     </ng-container>
   </div>
+
+  <form (ngSubmit)="crearMultimediaHeroe()" class="mt-4">
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label"><b>Descripción</b></label>
+      <input
+        id="descripcion"
+        [(ngModel)]="crearMultimedias.descripcion"
+        name="descripcion"
+        type="text"
+        class="form-control"
+        placeholder="Descripción"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="url" class="form-label"><b>URL de la Imaagen</b></label>
+      <input
+        id="url"
+        [(ngModel)]="crearMultimedias.url"
+        name="url"
+        type="text"
+        class="form-control"
+        placeholder="URL de la imagen"
+        required
+      />
+      <img [src]="crearMultimedias.url" class="img-thumbnail mt-2" *ngIf="crearMultimedias.url" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
+  </form>
 </div>
