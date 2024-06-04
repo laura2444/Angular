@@ -13,6 +13,7 @@ export class MultimediaPeliculaComponent implements OnInit {
   MultimediaPeliculas!: MultimediaPelicula[];
   peliculaSeleccionada: string = '';
   titulosUnicos: string[] = [];
+  res: string = '';
 
   constructor(
     private dataBD: MongoDBService,
@@ -42,13 +43,21 @@ export class MultimediaPeliculaComponent implements OnInit {
     this.titulosUnicos = Array.from(titulosSet);
   }
 
-  editarMultimedia(multimedia: MultimediaPelicula) {
-    // Implementar lógica para editar multimedia
+
+  eliminarMultimediaPelicula(idMultimedia: MultimediaPelicula) {
+    this.dataBD.crud_multimediaPelicula(idMultimedia, 'eliminar').subscribe((res: any) => {
+      
+      this.res = res;
+      console.log("Eliminado: " + this.res)
+      this.cargarMultimediaPelicula()
+
+    })
   }
 
-  eliminarMultimedia(idMultimedia: string) {
-    // Implementar lógica para eliminar multimedia
+  crearMultimediaPelicula(){
+    
   }
+
 
   imagenesPeliculas(idImagen: string) {
     this.router.navigate(['/multimedia', idImagen]);

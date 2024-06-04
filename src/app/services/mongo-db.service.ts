@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Heroe } from '../interfaces/heroe.interface';
 import { Multimedia } from '../interfaces/multimedia.interface';
+import { MultimediaPelicula } from '../interfaces/multimediaP.interface';
 import { URL_SERVICIOS } from '../config/utl.servicios';
 import { map } from 'rxjs';
 
@@ -133,6 +134,42 @@ getMultimediaPeliculasTitulo(titulo: string): any {
     })
   );
 }
+
+
+crud_multimediaPelicula(multimediaP : MultimediaPelicula, unaAccion : string): any{
+  
+  ///SERIA CREARLE UN CAMPO DIFERENTE PARA CREAR UNA GRUPO.
+  if ( unaAccion === 'insertar'){
+
+    let url = `${URL_SERVICIOS}/multimediaP/CrearGrupo`;
+
+    const body = {
+      descripcion:multimediaP.peliculas_id._id,
+      url:multimediaP.imagenes_id._id,
+    };
+      console.log(body)
+
+    return this.http.post(url, body).pipe(map((data) => data));
+
+  }
+
+  
+  if(unaAccion === 'eliminar'){
+    
+      let url = `${URL_SERVICIOS}/multimediaP/eliminar/${multimediaP._id}`;
+
+      return this.http.delete(url).pipe(
+        map((data) => {
+          return data;
+        })
+      );
+
+  }
+
+}
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //MULTIMEDIA HEROES
