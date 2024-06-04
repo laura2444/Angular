@@ -173,11 +173,11 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula, unaAccion : string): a
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //MULTIMEDIA HEROES
-getMultimediaHeroes(): any {  
-  let url = `${URL_SERVICIOS}/multimediaH/`     
+getMultimediaHeroes(heroes_id: string): any {
+  let url = `${URL_SERVICIOS}/multimediaH/heroeM/${heroes_id}`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('DATOS', data); 
+      console.log('heroes: ', data); 
       return data;  
     })
   );

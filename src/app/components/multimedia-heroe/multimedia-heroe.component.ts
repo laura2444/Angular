@@ -22,8 +22,9 @@ export class MultimediaHeroeComponent implements OnInit {
   }
 
   async cargarMultimediaHeroe() {
+    console.log(this.HeroeSeleccionado)
     try {
-      const data = await this.dataBD.getMultimediaHeroes().toPromise();
+      const data = await this.dataBD.getMultimediaHeroes(this.HeroeSeleccionado).toPromise();
       this.MultimediaHeroes = data.resp;
       console.log(this.MultimediaHeroes);
     } catch (error) {
