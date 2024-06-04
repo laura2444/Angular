@@ -6,6 +6,7 @@ export interface MultimediaHeroe {
     };
     imagenes_id: {
       _id: string;
-      descripcion: string;
+      descripcion:string,
+      url:string
     };
   }

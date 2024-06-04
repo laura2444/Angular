@@ -1,5 +1,9 @@
 <div class="container mt-4">
 
+  <div class="mb-3">
+    <button type="button" class="btn btn-primary" (click)="cargarMultimediaHeroe()">Crear Multimedia Heroe</button>
+  </div>
+
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <ng-container *ngFor="let multimedia of MultimediaHeroes; let i = index">
       <div class="col mb-4">
@@ -7,12 +11,15 @@
           <div class="card-body">
             <h5 class="card-title">{{ multimedia.heroes_id.nombre }}</h5>
             <p class="card-title">{{ multimedia.imagenes_id.descripcion }}</p>
+            <img [src]="multimedia.imagenes_id.url" class="card-img-top" alt="...">
             <p class="card-text" style="font-size: small; text-align: right;">
 
             </p>
           </div>
-          <div class="card-footer">
-          </div>        
+          <div class="card-footer text-center">
+            <button type="button" class="btn btn-sm btn-outline-danger w-50 " (click)="eliminarMultimediaPelicula()">Eliminar</button>
+            <button type="button" class="btn btn-sm btn-outline-success w-50" >Editar Imagen</button>
+          </div>       
         </div>
       </div>
       <div class="col mb-4" *ngIf="i % 4 === 3 || i === MultimediaHeroes.length - 1"></div>

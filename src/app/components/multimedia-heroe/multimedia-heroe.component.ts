@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MongoDBService } from '../../services/mongo-db.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MultimediaHeroe } from '../../interfaces/multimediaH.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-multimedia-heroe',
@@ -39,10 +40,22 @@ export class MultimediaHeroeComponent implements OnInit {
     try {
       const data = await this.dataBD.getMultimediaHeroes(this.info).toPromise();
       this.MultimediaHeroes = data.resp;
-      console.log(this.MultimediaHeroes);
+
+      if (this.MultimediaHeroes.length== 0){
+        Swal.fire("El heroe no tiene imagenes");
+
+      }
     } catch (error) {
       console.error('Error al cargar datos:', error);
     }
+  }
+
+  eliminarMultimediaPelicula() {
+
+  }
+
+  crearMultimediaPelicula() {
+
   }
 
 
