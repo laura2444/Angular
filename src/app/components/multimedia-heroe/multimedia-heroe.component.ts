@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MongoDBService } from '../../services/mongo-db.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MultimediaHeroe } from '../../interfaces/multimediaH.interface';
 
 @Component({
@@ -11,11 +11,24 @@ import { MultimediaHeroe } from '../../interfaces/multimediaH.interface';
 export class MultimediaHeroeComponent implements OnInit {
   MultimediaHeroes!: MultimediaHeroe[];
   HeroeSeleccionado: string = '';
+  info: string = '';
 
   constructor(
     private dataBD: MongoDBService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { 
+
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.info = params['unHeroe'];
+      console.log('idMultimedia', this.info);
+
+    });
+
+
+
+  }
 
   ngOnInit() {
     this.cargarMultimediaHeroe();
@@ -24,7 +37,7 @@ export class MultimediaHeroeComponent implements OnInit {
   async cargarMultimediaHeroe() {
     console.log(this.HeroeSeleccionado)
     try {
-      const data = await this.dataBD.getMultimediaHeroes(this.HeroeSeleccionado).toPromise();
+      const data = await this.dataBD.getMultimediaHeroes(this.info).toPromise();
       this.MultimediaHeroes = data.resp;
       console.log(this.MultimediaHeroes);
     } catch (error) {
