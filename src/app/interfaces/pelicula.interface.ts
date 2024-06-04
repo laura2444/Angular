@@ -2,7 +2,7 @@ export interface Pelicula {
     _id: string;
     titulo: string;
     descripcion: string;
-    fecha_lanzamiento: Date;
+    fecha_lanzamiento: string;
     img: string;
   }
   

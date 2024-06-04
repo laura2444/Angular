@@ -1,0 +1,55 @@
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <ng-container *ngFor="let pelicula of Peliculas">
+        <div class="col">
+          <div class="card h-100 px-2" style="font-size: small;">
+            <img [src]="pelicula.img" class="card-img-top img-fluid fixed-img-size" alt="Imagen Pelicula">
+            <div class="card-body">
+                
+              <h5 class="card-title" style="font-size: 0.9rem;">{{ pelicula.titulo }}</h5>
+              <p class="card-text">{{ pelicula.descripcion }}</p>
+                <p class="card-text text-muted" style="font-size: small; text-align: right;">
+              {{ pelicula.fecha_lanzamiento| date:'yyyy-MM-dd' }}
+                </p>
+              
+            </div>
+
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-sm btn-outline-danger" (click)="eliminarPelicula(pelicula)">Eliminar</button>
+              <button type="button" class="btn btn-sm btn-outline-success" (click)="editarPelicula(pelicula._id)">Editar Imagen</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+  
+  
+    </div>
+  </div>
+  
+
+  <div class="col-12 mt-4 px-5"> 
+    <form (ngSubmit)="crearPelicula()">
+      <div class="mb-3">
+        <label for="titulo" class="form-label"><b>Titulo</b></label>
+        <input id="titulo" [(ngModel)]="unPelicula.titulo" name="descripcion" type="text" class="form-control" placeholder="titulo" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="descripcion" class="form-label"><b>Descripción</b></label>
+        <input id="descripcion" [(ngModel)]="unPelicula.descripcion" name="descripcion" type="text" class="form-control" placeholder="descripcion" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="url" class="form-label"><b>URL de la Imagen</b></label>
+        <input id="url" [(ngModel)]="unPelicula.img" name="img" type="text" class="form-control" placeholder="URL de la imagen" required />
+        <img [src]="unPelicula.img" class="img-thumbnail mt-2" *ngIf="unPelicula.img" />
+      </div>
+
+      <div class="mb-3">
+        <label for="fecha" class="form-label"><b>Fecha</b></label>
+        <input id="fecha" [(ngModel)]="unPelicula.fecha_lanzamiento" name="fecha" type="date" class="form-control" placeholder="fecha" required />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Crear Película</button>
+    </form>
+  </div>

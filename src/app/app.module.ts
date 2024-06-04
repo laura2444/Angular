@@ -13,6 +13,7 @@ import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/mu
 import { MultimediaComponent } from './components/multimedia-edit/multimedia.component';
 import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
 import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
+import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimed
     MultimediaPeliculaComponent,
     MultimediaComponent,
     MultimediaListaComponent,
-    MultimediaHeroeComponent
+    MultimediaHeroeComponent,
+    PeliculaListComponent
   ],
   imports: [     /*modulos a importar en nuestro proyecto */
     BrowserModule,

@@ -184,6 +184,62 @@ getPeliculas(): any {
 }
 
 
+crud_Peliculas(unaPelicula: Pelicula, unaAccion: string):any{
+
+  if ( unaAccion === 'insertar'){
+
+    let url = `${URL_SERVICIOS}/peliculas/crearP`;
+    
+    const body = {
+      titulo:unaPelicula.titulo,
+      descripcion:unaPelicula.descripcion,
+      fecha_lanzamiento:unaPelicula.fecha_lanzamiento,
+      img:unaPelicula.img,
+    };
+    console.log(body)
+
+
+    return this.http.post(url, body).pipe(map((data) => data));
+
+  }
+
+
+  if(unaAccion === 'modificar'){
+    
+    console.log('Datos antes de actualizar:', unaPelicula);
+
+    let url = `${URL_SERVICIOS}/peliculas/actualizarP/${unaPelicula._id}`;
+
+    
+    const body = {
+      titulo:unaPelicula.titulo,
+      descpricion:unaPelicula.descripcion,
+      fecha_lanzamiento:unaPelicula.fecha_lanzamiento,
+      img:unaPelicula.img,
+    };
+    console.log(body)
+
+    return this.http.put(url, body).pipe(map((data) => data));
+
+  }
+
+  if(unaAccion === 'eliminar'){
+    console.log("dato enviados eliminar "+ unaPelicula._id)  
+      let url = `${URL_SERVICIOS}/peliculas/eliminarP/${unaPelicula._id}`;
+
+      return this.http.delete(url).pipe(
+        map((data) => {
+          return data;
+        })
+      );
+
+  }
+
+}
+
+
+
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
