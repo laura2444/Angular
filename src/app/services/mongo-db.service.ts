@@ -174,30 +174,39 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula | MultimediaPeliculaSol
 /////////////////////////////////////////////////////////////////////////////////////////
 //Pelicula
 
-getPeliculas(): any {  
-  let url = `${URL_SERVICIOS}/peliculas`     
-  return this.http.get(url).pipe(  
-    map((data) => { 
-      console.log('DATOS peliculas', data); 
-      return data;  
+getPeliculas(): any {
+  let url = `${URL_SERVICIOS}/peliculas`
+  return this.http.get(url).pipe(
+    map((data) => {
+      console.log('DATOS peliculas', data);
+      return data;
+    })
+  );
+}
+
+getPeliculasID(idPelicula: any): any {
+  let url = `${URL_SERVICIOS}/peliculas/${idPelicula}`
+  return this.http.get(url).pipe(
+    map((data) => {
+      console.log('DATOS pelicula por ID', data);
+      return data;
     })
   );
 }
 
 
-crud_Peliculas(unaPelicula: Pelicula, unaAccion: string):any{
+crud_Peliculas(unaPelicula: Pelicula, unaAccion: string): any {
 
-  if ( unaAccion === 'insertar'){
+  if (unaAccion === 'insertar') {
 
     let url = `${URL_SERVICIOS}/peliculas/crearP`;
     
     const body = {
-      titulo:unaPelicula.titulo,
-      descripcion:unaPelicula.descripcion,
-      fecha_lanzamiento:unaPelicula.fecha_lanzamiento,
-      img:unaPelicula.img,
+      titulo: unaPelicula.titulo,
+      descripcion: unaPelicula.descripcion,
+      fecha_lanzamiento: unaPelicula.fecha_lanzamiento,
+      img: unaPelicula.img,
     };
-    console.log(body)
 
 
     return this.http.post(url, body).pipe(map((data) => data));
@@ -205,18 +214,17 @@ crud_Peliculas(unaPelicula: Pelicula, unaAccion: string):any{
   }
 
 
-  if(unaAccion === 'modificar'){
-    
+  if (unaAccion === 'modificar') {
+
     console.log('Datos antes de actualizar:', unaPelicula);
 
     let url = `${URL_SERVICIOS}/peliculas/actualizarP/${unaPelicula._id}`;
 
-    
     const body = {
-      titulo:unaPelicula.titulo,
-      descpricion:unaPelicula.descripcion,
-      fecha_lanzamiento:unaPelicula.fecha_lanzamiento,
-      img:unaPelicula.img,
+      titulo: unaPelicula.titulo,
+      descripcion: unaPelicula.descripcion,
+      fecha_lanzamiento: unaPelicula.fecha_lanzamiento,
+      img: unaPelicula.img,
     };
     console.log(body)
 
@@ -224,23 +232,19 @@ crud_Peliculas(unaPelicula: Pelicula, unaAccion: string):any{
 
   }
 
-  if(unaAccion === 'eliminar'){
-    console.log("dato enviados eliminar "+ unaPelicula._id)  
-      let url = `${URL_SERVICIOS}/peliculas/eliminarP/${unaPelicula._id}`;
+  if (unaAccion === 'eliminar') {
+    console.log("dato enviados eliminar " + unaPelicula._id)
+    let url = `${URL_SERVICIOS}/peliculas/eliminarP/${unaPelicula._id}`;
 
-      return this.http.delete(url).pipe(
-        map((data) => {
-          return data;
-        })
-      );
+    return this.http.delete(url).pipe(
+      map((data) => {
+        return data;
+      })
+    );
 
   }
 
 }
-
-
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////

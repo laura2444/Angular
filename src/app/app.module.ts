@@ -14,6 +14,7 @@ import { MultimediaComponent } from './components/multimedia-edit/multimedia.com
 import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
 import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
 import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.component';
+import { PeliculaEditComponent } from './components/pelicula-edit/pelicula-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.
     MultimediaComponent,
     MultimediaListaComponent,
     MultimediaHeroeComponent,
-    PeliculaListComponent
+    PeliculaListComponent,
+    PeliculaEditComponent
   ],
   imports: [     /*modulos a importar en nuestro proyecto */
     BrowserModule,

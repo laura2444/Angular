@@ -63,7 +63,7 @@ export class PeliculaListComponent {
   }
 
   editarPelicula(idPelicula : any){
-    //this.router.navigate(['/multimedia', idImagen]);
+    this.router.navigate(['/peliculaEdit', idPelicula]);
   }
 
   agregarPelicula(pelicula : Pelicula){

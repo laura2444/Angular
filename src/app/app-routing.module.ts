@@ -8,6 +8,7 @@ import { MultimediaComponent } from './components/multimedia-edit/multimedia.com
 import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
 import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
 import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.component'
+import { PeliculaEditComponent } from './components/pelicula-edit/pelicula-edit.component'
 
 const routes: Routes = [
   {path: 'hogar',component: HomeComponent},
@@ -19,6 +20,9 @@ const routes: Routes = [
   {path: 'multimedia/:idImagen',component: MultimediaComponent},
   {path: 'multimediaHeroe/:unHeroe',component: MultimediaHeroeComponent},
   {path: 'ListaP', component: PeliculaListComponent},
+  {path: 'peliculaEdit/:idPelicula', component: PeliculaEditComponent},
+  
+  
 
 
 
