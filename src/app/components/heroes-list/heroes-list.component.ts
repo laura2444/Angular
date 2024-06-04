@@ -77,8 +77,9 @@ editarHeroe(unIdHeroe:any){
 }
 
 editarFotos(unHeroe:any){
+  console.log(unHeroe)
+  this.router.navigate(['/multimediaHeroe', unHeroe]);
 
 }
-
 
 }

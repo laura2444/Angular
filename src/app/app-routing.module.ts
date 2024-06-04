@@ -6,6 +6,7 @@ import { HeroeEditComponent } from './components/heroe-edit/heroe-edit.component
 import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/multimedia-pelicula.component';
 import { MultimediaComponent } from './components/multimedia-edit/multimedia.component';
 import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
+import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
 
 const routes: Routes = [
   {path: 'hogar',component: HomeComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path: 'multimediaPelicula',component: MultimediaPeliculaComponent}, //FUNCIONA
   {path: 'multimediaLista',component: MultimediaListaComponent},
   {path: 'multimedia/:idImagen',component: MultimediaComponent},
+  {path: 'multimediaHeroe/',component: MultimediaHeroeComponent},
+
 
 
   {path: '**',pathMatch: 'full',redirectTo: 'home'}

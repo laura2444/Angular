@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MultimediaPeliculaComponent } from './components/multimedia-pelicula/multimedia-pelicula.component';
 import { MultimediaComponent } from './components/multimedia-edit/multimedia.component';
 import { MultimediaListaComponent } from './components/multimedia-lista/multimedia-lista.component';
+import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MultimediaListaComponent } from './components/multimedia-lista/multimed
     HomeComponent,
     MultimediaPeliculaComponent,
     MultimediaComponent,
-    MultimediaListaComponent
+    MultimediaListaComponent,
+    MultimediaHeroeComponent
   ],
   imports: [     /*modulos a importar en nuestro proyecto */
     BrowserModule,

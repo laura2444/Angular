@@ -124,8 +124,6 @@ getMultimediaPeliculas(): any {
   );
 }
 
-
-
 getMultimediaPeliculasTitulo(titulo: string): any {
   let url = `${URL_SERVICIOS}/multimediaP/titulo/${titulo}`     
   return this.http.get(url).pipe(  
@@ -136,8 +134,17 @@ getMultimediaPeliculasTitulo(titulo: string): any {
   );
 }
 
-
-
+/////////////////////////////////////////////////////////////////////////////////////////
+//MULTIMEDIA HEROES
+getMultimediaHeroes(): any {  
+  let url = `${URL_SERVICIOS}/multimediaH/`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('DATOS', data); 
+      return data;  
+    })
+  );
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////DANIEL TAMARA RIVERA
