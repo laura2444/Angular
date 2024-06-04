@@ -11,11 +11,53 @@
             <p class="card-text">Personaje {{ cast.heroes_id.nombre }}</p>
           </div>
           <div class="card-footer text-center">
-            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" >Eliminar Casting</button>
+            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" (click)="eliminarCasting(cast)" >Eliminar Casting</button>
             <button type="button" class="btn btn-sm btn-outline-success w-50" >Editar Información</button>
           </div>
         </div>
       </div>
     </ng-container>
   </div>
+
+
+  <!-- Formulario para crear nueva multimediaPelicula -->
+  <form (ngSubmit)="crearCasting()" class="mt-4">
+    <div class="mb-3">
+      <label for="heroe" class="form-label"><b>Heroes</b></label>
+      <select id="heroe" class="form-select" [(ngModel)]="unCasting.heroes_id._id" name="heroe" required>
+        <option value="" disabled selected>Selecciona una Heroe</option>
+        <option *ngFor="let heroe of Heroes" [value]="heroe._id">
+          {{ heroe.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="personaje" class="form-label"><b>Personaje</b></label>
+      <input
+        id="personaje"
+        [(ngModel)]="unCasting.personaje"
+        name="personaje"
+        type="text"
+        class="form-control"
+        placeholder="Nombre del personaje a intepretar o nombre actor"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+        <label for="pelicula" class="form-label"><b>Película</b></label>
+        <select id="pelicula" class="form-select" [(ngModel)]="unCasting.peliculas_id._id" name="peliculas_id" required>
+          <option value="" disabled selected>Selecciona una película</option>
+          <option *ngFor="let pelicula of Peliculas" [value]="pelicula._id">
+            {{ pelicula.titulo }}
+          </option>
+        </select>
+      </div>
+    
+
+    <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
+  </form>
+
+
 </div>

@@ -20,10 +20,18 @@ export class CastingPeliculaComponent {
   res: string = '';
   res1: any;
 
-  unCasting: CastingSolo = {
+  unCasting: Casting = {
     _id: '',
-    heroes_id: '',
-    peliculas_id: '',
+    heroes_id:{
+      _id: '',
+      nombre: '',
+    },
+    personaje: '',
+    peliculas_id: {
+      _id: '',
+      titulo: '',
+      img: '',
+    },
 
   };
 
@@ -52,8 +60,22 @@ export class CastingPeliculaComponent {
     }
   }
 
+  crearCasting(){
+    this.crearCastingPelicula(this.unCasting)
+  }
+
+
   eliminarCasting(unCast : Casting){
     this.dataBD.crud_castingPelicula(unCast, 'eliminar').subscribe((res: any) => {
+      this.res = res;
+      console.log("Eliminado: " + this.res);
+      this.cargarCastingPelicula();
+    });
+
+  }
+
+  crearCastingPelicula(unCast : Casting){
+    this.dataBD.crud_castingPelicula(unCast, 'insertar').subscribe((res: any) => {
       this.res = res;
       console.log("Eliminado: " + this.res);
       this.cargarCastingPelicula();
