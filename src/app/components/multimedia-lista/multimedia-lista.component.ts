@@ -14,6 +14,18 @@ export class MultimediaListaComponent {
   Multimedias!: Multimedia[];
   temp!: any;
 
+  ///
+  res: any;
+
+  /////
+  unMultimedia: Multimedia = {
+    _id: '-1',
+    descripcion: '',
+    url: '',  
+  }
+
+
+
   constructor(
     private dataBD: MongoDBService,
     private router: Router
@@ -35,10 +47,39 @@ export class MultimediaListaComponent {
       });
   }
 
+  crearMultimedia(){
+    console.log(this.unMultimedia)
+    this.agregarImagen(this.unMultimedia)
+  }
 
-  imagenesPeliculas(multimedia: string) {
+
+  imagenEditar(multimedia: any) {
     this.router.navigate(['/multimedia', multimedia]);
   }
+
+  agregarImagen(multimedia: Multimedia){
+    this.dataBD.crud_multimedia(multimedia, 'insertar')
+    console.log('insertado')
+    this.cargarMultimediaBD()
+    
+    this.unMultimedia = {
+    _id: '-1',
+    descripcion: '',
+    url: '',
+    }
+
+  }
+
+
   
+  eliminarImagen(unMultimedia : any){
+    this.dataBD.crud_multimediaPelicula(unMultimedia, 'eliminar').subscribe((res: any) => {
+      this.res = res;
+      console.log("Eliminado: " + this.res);
+      this.cargarMultimediaBD();
+    });
+    this.cargarMultimediaBD()
+    
+  }
 
 }

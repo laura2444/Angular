@@ -55,7 +55,7 @@ export class MultimediaHeroeComponent implements OnInit {
   }
 
   crearMultimediaPelicula() {
-
+    
   }
 
   imagenesHeroes(idImagen: string) {

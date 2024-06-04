@@ -224,16 +224,17 @@ getUnMultimediaID(idMultimedia:string):any{
   );
 }
 
-crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
+crud_multimedia(unMultimedia: Multimedia, unaAccion: string):any{
 
   if ( unaAccion === 'insertar'){
 
     let url = `${URL_SERVICIOS}/multimedia/crearMultimedia`;
     
     const body = {
-      descripcion:multimedia.descripcion,
-      url:multimedia.url,
+      descripcion:unMultimedia.descripcion,
+      url:unMultimedia.url,
     };
+    console.log(body)
 
 
     return this.http.post(url, body).pipe(map((data) => data));
@@ -243,13 +244,13 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
 
   if(unaAccion === 'modificar'){
     
-    console.log('Datos antes de actualizar:', multimedia);
+    console.log('Datos antes de actualizar:', unMultimedia);
 
-    let url = `${URL_SERVICIOS}/multimedia/actualizar/${multimedia._id}`;
+    let url = `${URL_SERVICIOS}/multimedia/actualizar/${unMultimedia._id}`;
 
     const body = {
-      descripcion:multimedia.descripcion,
-      url:multimedia.url,
+      descripcion:unMultimedia.descripcion,
+      url:unMultimedia.url,
     };
     console.log(body)
 
@@ -258,9 +259,8 @@ crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
   }
 
   if(unaAccion === 'eliminar'){
-    let parametros2 = new HttpParams();
-
-      let url = `${URL_SERVICIOS}/multimedia/eliminar/${multimedia._id}`;
+    console.log("dato enviados eliminar "+ unMultimedia._id)  
+      let url = `${URL_SERVICIOS}/multimedia/eliminar/${unMultimedia._id}`;
 
       return this.http.delete(url).pipe(
         map((data) => {
