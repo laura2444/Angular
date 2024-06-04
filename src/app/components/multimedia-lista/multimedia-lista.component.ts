@@ -48,7 +48,7 @@ export class MultimediaListaComponent {
   }
 
   crearMultimedia(){
-    console.log(this.unMultimedia)
+    console.log( "Información de datos guardados"+this.unMultimedia)
     this.agregarImagen(this.unMultimedia)
   }
 
@@ -58,10 +58,12 @@ export class MultimediaListaComponent {
   }
 
   agregarImagen(multimedia: Multimedia){
-    this.dataBD.crud_multimedia(multimedia, 'insertar')
-    console.log('insertado')
-    this.cargarMultimediaBD()
-    
+    this.dataBD.crud_multimedia(multimedia, 'insertar').subscribe((res: any) => {
+      this.res = res;
+      console.log("Eliminado: " + this.res);
+      this.cargarMultimediaBD();
+    });
+
     this.unMultimedia = {
     _id: '-1',
     descripcion: '',
@@ -72,8 +74,8 @@ export class MultimediaListaComponent {
 
 
   
-  eliminarImagen(unMultimedia : any){
-    this.dataBD.crud_multimediaPelicula(unMultimedia, 'eliminar').subscribe((res: any) => {
+  eliminarImagen(unMultimedia : Multimedia){
+    this.dataBD.crud_multimedia(unMultimedia, 'eliminar').subscribe((res: any) => {
       this.res = res;
       console.log("Eliminado: " + this.res);
       this.cargarMultimediaBD();

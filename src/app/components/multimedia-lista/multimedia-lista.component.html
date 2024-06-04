@@ -15,21 +15,24 @@
       </div>
     </ng-container>
 
-    <div class="col-12 mt-4"> <!-- Ajuste para que el formulario ocupe todo el ancho -->
-      <form (ngSubmit)="crearMultimedia()">
-        <div class="mb-3">
-          <label for="descripcion" class="form-label"><b>Descripción</b></label>
-          <input id="descripcion" [(ngModel)]="unMultimedia.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripción" required />
-        </div>
 
-        <div class="mb-3">
-          <label for="url" class="form-label"><b>URL de la Imagen</b></label>
-          <input id="url" [(ngModel)]="unMultimedia.url" name="url" type="text" class="form-control" placeholder="URL de la imagen" required />
-          <img [src]="unMultimedia.url" class="img-thumbnail mt-2" *ngIf="unMultimedia.url" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
-      </form>
-    </div>
   </div>
+</div>
+
+<div class="col-12 mt-4 px-5"> <!-- Ajuste para que el formulario ocupe todo el ancho -->
+  
+  <form (ngSubmit)="crearMultimedia()">
+    <div class="mb-3">
+      <label for="descripcion" class="form-label"><b>Descripción</b></label>
+      <input id="descripcion" [(ngModel)]="unMultimedia.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripción" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="url" class="form-label"><b>URL de la Imagen</b></label>
+      <input id="url" [(ngModel)]="unMultimedia.url" name="url" type="text" class="form-control" placeholder="URL de la imagen" required />
+      <img [src]="unMultimedia.url" class="img-thumbnail mt-2" *ngIf="unMultimedia.url" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
+  </form>
 </div>
