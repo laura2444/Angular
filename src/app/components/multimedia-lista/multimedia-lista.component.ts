@@ -11,14 +11,34 @@ import { Multimedia } from '../../interfaces/multimedia.interface';
 })
 export class MultimediaListaComponent {
 
-  Multimedias!:Multimedia[];
+  Multimedias!: Multimedia[];
   temp!: any;
 
   constructor(
-    private dataBD:MongoDBService,
+    private dataBD: MongoDBService,
     private router: Router
 
-  ){}
+  ) { }
 
+  ngOnInit() {
+    this.cargarMultimediaBD();
+  }
+
+  ///METODO ASYNCRONICOQ QUE GENERA SIEMPRE CAMBIOS AL REALIZAR UN ENVIO O HABER CAMBIOS EN LA INFORMACIÓN
+  async cargarMultimediaBD() {
+    await this.dataBD
+      .getMultimedia()
+      .toPromise()
+      .then((data: any) => {
+        this.Multimedias = data.resp;
+
+      });
+  }
+
+
+  imagenesPeliculas(multimedia: string) {
+    this.router.navigate(['/multimedia', multimedia]);
+  }
+  
 
 }

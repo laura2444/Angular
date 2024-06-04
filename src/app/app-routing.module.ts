@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'heroes',component: HeroesListComponent}, //FUNCIONA
   {path: 'heroeedit/:idheroe',component: HeroeEditComponent},
   {path: 'multimediaPelicula',component: MultimediaPeliculaComponent}, //FUNCIONA
-  {path: 'multimediaLista',component: MultimediaListaComponent},
+  {path: 'multimediaLista',component: MultimediaListaComponent }, //NOFUNCIONA
   {path: 'multimedia/:idImagen',component: MultimediaComponent},
   {path: 'multimediaHeroe/:unHeroe',component: MultimediaHeroeComponent},
 

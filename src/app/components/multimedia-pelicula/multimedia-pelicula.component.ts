@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MultimediaPelicula, MultimediaPeliculaSolo } from '../../interfaces/multimediaP.interface';
 import { Multimedia } from '../../interfaces/multimedia.interface';
 import { Pelicula } from '../../interfaces/pelicula.interface';
- 
+
 @Component({
   selector: 'app-multimedia-pelicula',
   templateUrl: './multimedia-pelicula.component.html',
@@ -16,21 +16,21 @@ export class MultimediaPeliculaComponent implements OnInit {
   peliculaSeleccionada: string = '';
   titulosUnicos: string[] = [];
   res: string = '';
-
-  res1:any;
+  res1: any;
 
   EnviarMultimediaPelicula: MultimediaPeliculaSolo = {
-    _id: '',
+    _id: '-1',
     peliculas_id: '',
     imagenes_id: ''
   };
-  peliculas!: Pelicula [];
+  peliculas!: Pelicula[];
   crearMultimedias: Multimedia = {
     descripcion: '',
     url: '',
     _id: '-1',
   };
 
+  nuevo_id: string = '';
 
   constructor(
     private dataBD: MongoDBService,
@@ -50,8 +50,6 @@ export class MultimediaPeliculaComponent implements OnInit {
       this.peliculas = data2.resp;
 
       this.generarTitulosUnicos();
-
-      
     } catch (error) {
       console.error('Error al cargar datos:', error);
     }
@@ -65,35 +63,56 @@ export class MultimediaPeliculaComponent implements OnInit {
     this.titulosUnicos = Array.from(titulosSet);
   }
 
-
   eliminarMultimediaPelicula(idMultimedia: MultimediaPelicula) {
     this.dataBD.crud_multimediaPelicula(idMultimedia, 'eliminar').subscribe((res: any) => {
-      
       this.res = res;
-      console.log("Eliminado: " + this.res)
-      this.cargarMultimediaPelicula()
-
-    })
+      console.log("Eliminado: " + this.res);
+      this.cargarMultimediaPelicula();
+    });
   }
 
-  crearMultimediaPelicula(){
-    this.dataBD.crud_multimedia(this.crearMultimedias, 'insertar').subscribe((res: any) => {
-      this.res1 = res;
-      this.EnviarMultimediaPelicula = this.res1._id
-    })
-    this.dataBD.crud_multimediaPelicula(this.EnviarMultimediaPelicula, 'insertar')
+  async crearMultimediaPelicula() {
+    try {
+      const res1 = await this.dataBD.crud_multimedia(this.crearMultimedias, 'insertar').toPromise();
+      //console.log("Respuesta del servicio:", res1); // Imprimimos la respuesta completa para depuración
 
-    this.cargarMultimediaPelicula()
+      // Verificamos si res1.resp contiene _id y lo asignamos
+      if (res1 && res1.resp && res1.resp._id) {
+        this.crearMultimedias._id = res1.resp._id as string;
+        this.nuevo_id = this.crearMultimedias._id;
+        this.EnviarMultimediaPelicula.imagenes_id = this.nuevo_id;
+        //console.log("ID de la imagen creada: " + this.nuevo_id);
 
+        await this.dataBD.crud_multimediaPelicula(this.EnviarMultimediaPelicula, 'insertar').toPromise();
+        //console.log("MultimediaPelicula creada con éxito");
+
+        this.cargarMultimediaPelicula();
+        // Restablecer los valores de los campos de entrada después de crear la multimedia
+        this.crearMultimedias = {
+          descripcion: '',
+          url: '',
+          _id: '-1',
+        };
+        this.EnviarMultimediaPelicula = {
+          _id: '-1',
+          peliculas_id: '',
+          imagenes_id: ''
+        };
+
+      } else {
+        console.error('Error: el _id es undefined en la respuesta de crud_multimedia.');
+      }
+    } catch (error) {
+      console.error('Error al crear multimedia pelicula:', error);
+    }
   }
-
 
   imagenesPeliculas(idImagen: string) {
     this.router.navigate(['/multimedia', idImagen]);
   }
 
   async clasificarPeliculas() {
-    if (this.peliculaSeleccionada != '') {
+    if (this.peliculaSeleccionada !== '') {
       try {
         const data = await this.dataBD.getMultimediaPeliculasTitulo(this.peliculaSeleccionada).toPromise();
         this.MultimediaPeliculas = data.resp;
@@ -106,5 +125,4 @@ export class MultimediaPeliculaComponent implements OnInit {
       this.cargarMultimediaPelicula();
     }
   }
-
 }

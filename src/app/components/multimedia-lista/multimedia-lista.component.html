@@ -1,1 +1,21 @@
 <p>multimedia-lista works!</p>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    <ng-container *ngFor="let multimedia of Multimedias; let i = index">
+      <div class="col mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ multimedia.descripcion }}</h5>
+            
+            <img [src]="multimedia.url" class="card-img-top" alt="...">
+            
+          </div>
+          <div class="card-footer text-center">
+            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" >Eliminar</button>
+            <button type="button" class="btn btn-sm btn-outline-success w-50" >Editar Imagen Pelicula</button>
+          </div>        
+        </div>
+      </div>
+      <div class="col mb-4" *ngIf="i % 4 === 3 || i === Multimedias.length - 1"></div>
+    </ng-container>
+  </div>

@@ -145,9 +145,10 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula | MultimediaPeliculaSol
     let url = `${URL_SERVICIOS}/multimediaP/CrearGrupo`;
 
     const body = {
-      descripcion:multimediaP.peliculas_id,
-      url:multimediaP.imagenes_id,
+      peliculas_id:multimediaP.peliculas_id,
+      imagenes_id:multimediaP.imagenes_id,
     };
+    console.log(body)
 
     return this.http.post(url, body).pipe(map((data) => data));
 
