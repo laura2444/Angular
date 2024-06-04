@@ -82,6 +82,10 @@ export class CastingPeliculaComponent {
     });
 
   }
+
+  editarCasting(idCasting: string) {
+    this.router.navigate(['/CastingEdit', idCasting]);
+  }
   
 }
 

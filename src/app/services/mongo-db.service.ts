@@ -399,7 +399,7 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
 
 
     return this.http.post(url, body).pipe(map((data) => data));
-
+    
   }
 
 
@@ -407,7 +407,7 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
     
     console.log('Datos antes de actualizar:', unCast);
 
-    let url = `${URL_SERVICIOS}/cast/actualizar/${unCast}`;
+    let url = `${URL_SERVICIOS}/cast/actualizar/${unCast._id}`;
 
     const body = {
       heroes_id:unCast.heroes_id._id,

@@ -10,6 +10,7 @@ import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimed
 import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.component'
 import { PeliculaEditComponent } from './components/pelicula-edit/pelicula-edit.component'
 import { CastingPeliculaComponent } from './components/casting-pelicula/casting-pelicula.component'
+import { CastingPeliculaEditComponent } from './components/casting-pelicula-edit/casting-pelicula-edit.component'
 
 const routes: Routes = [
   {path: 'hogar',component: HomeComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'ListaP', component: PeliculaListComponent},
   {path: 'peliculaEdit/:idPelicula', component: PeliculaEditComponent},
   {path: 'CastingPelicula', component: CastingPeliculaComponent},
+  {path: 'CastingEdit/:idCasting', component: CastingPeliculaEditComponent},
   
   
   
