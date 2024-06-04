@@ -1,15 +1,10 @@
-<div class="container mt-4">  
-<!-- Botón para crear multimediaPelicula -->
-<div class="mb-3">
-  <button type="button" class="btn btn-primary" (click)="crearMultimediaPelicula()">Crear Multimedia Pelicula</button>
-</div>
+<div class="container mt-4">
   <select class="form-select mb-3" [(ngModel)]="peliculaSeleccionada" (change)="clasificarPeliculas()">
     <option selected></option>
     <option *ngFor="let titulo of titulosUnicos" [value]="titulo">
       {{ titulo }}
     </option>
   </select>
-
 
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <ng-container *ngFor="let multimedia of MultimediaPeliculas; let i = index">
@@ -24,12 +19,59 @@
             </p>
           </div>
           <div class="card-footer text-center">
-            <button type="button" class="btn btn-sm btn-outline-danger w-50 " (click)="eliminarMultimediaPelicula(multimedia)">Eliminar</button>
-            <button type="button" class="btn btn-sm btn-outline-success w-50" (click)="imagenesPeliculas(multimedia.imagenes_id._id)">Editar Imagen</button>
+            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" (click)="eliminarMultimediaPelicula(multimedia)">Eliminar</button>
+            <button type="button" class="btn btn-sm btn-outline-success w-50" (click)="imagenesPeliculas(multimedia.imagenes_id._id)">Editar Imagen Pelicula</button>
           </div>        
         </div>
       </div>
       <div class="col mb-4" *ngIf="i % 4 === 3 || i === MultimediaPeliculas.length - 1"></div>
     </ng-container>
   </div>
+
+  <hr>
+
+<!-- Formulario para crear nueva multimediaPelicula -->
+<form (ngSubmit)="crearMultimediaPelicula()">
+  <div class="mb-3">
+    <label for="pelicula" class="form-label">Película</label>
+    <select id="pelicula" class="form-select" [(ngModel)]="EnviarMultimediaPelicula.peliculas_id" name="peliculas_id" required>
+      <option *ngFor="let pelicula of peliculas" [value]="pelicula._id">
+        {{ pelicula.titulo }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label><b>descripcion</b></label>
+    <textarea
+      [(ngModel)]="crearMultimedias.descripcion"
+      name="descripcion"
+      type="text"
+      class="form-control"
+      placeholder="descripcion"
+      required
+      rows="4"
+      cols="60"
+    >
+    </textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label><b>Imagen</b></label>
+    <input
+      [(ngModel)]="crearMultimedias.url"
+      name="img"
+      type="text"
+      class="form-control"
+      placeholder="Imagen"
+      required
+    />
+    <img [src]="crearMultimedias.url" class="img-thumb" />
+  </div>
+
+  
+  
+  <button type="submit" class="btn btn-primary">Crear multimediaPelicula</button>
+</form>
 </div>

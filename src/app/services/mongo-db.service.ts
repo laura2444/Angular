@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Heroe } from '../interfaces/heroe.interface';
 import { Multimedia } from '../interfaces/multimedia.interface';
-import { MultimediaPelicula } from '../interfaces/multimediaP.interface';
+import { MultimediaPelicula, MultimediaPeliculaSolo } from '../interfaces/multimediaP.interface';
+import { Pelicula } from '../interfaces/pelicula.interface';
 import { URL_SERVICIOS } from '../config/utl.servicios';
 import { map } from 'rxjs';
 
@@ -136,7 +137,7 @@ getMultimediaPeliculasTitulo(titulo: string): any {
 }
 
 
-crud_multimediaPelicula(multimediaP : MultimediaPelicula, unaAccion : string): any{
+crud_multimediaPelicula(multimediaP : MultimediaPelicula | MultimediaPeliculaSolo, unaAccion : string): any{
   
   ///SERIA CREARLE UN CAMPO DIFERENTE PARA CREAR UNA GRUPO.
   if ( unaAccion === 'insertar'){
@@ -144,10 +145,9 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula, unaAccion : string): a
     let url = `${URL_SERVICIOS}/multimediaP/CrearGrupo`;
 
     const body = {
-      descripcion:multimediaP.peliculas_id._id,
-      url:multimediaP.imagenes_id._id,
+      descripcion:multimediaP.peliculas_id,
+      url:multimediaP.imagenes_id,
     };
-      console.log(body)
 
     return this.http.post(url, body).pipe(map((data) => data));
 
@@ -166,6 +166,19 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula, unaAccion : string): a
 
   }
 
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//Pelicula
+
+getPeliculas(): any {  
+  let url = `${URL_SERVICIOS}/peliculas`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('DATOS peliculas', data); 
+      return data;  
+    })
+  );
 }
 
 
@@ -187,6 +200,19 @@ getMultimediaHeroes(heroes_id: string): any {
 /////////////////////////////////////////////////////////////////////////////////////////DANIEL TAMARA RIVERA
 //ACCESO A MULTIMEDIA 
 
+
+getMultimedia(): any {  
+  let url = `${URL_SERVICIOS}/multimedia`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('DATOS', data); 
+      return data;  
+    })
+  );
+}
+
+
+
 getUnMultimediaID(idMultimedia:string):any{
   console.log("Get multimedia")
   let url = `${URL_SERVICIOS}/multimedia/obtener/${idMultimedia}`;
@@ -200,20 +226,14 @@ getUnMultimediaID(idMultimedia:string):any{
 crud_multimedia(multimedia: Multimedia, unaAccion: string):any{
 
   if ( unaAccion === 'insertar'){
-    let parametros = new HttpParams();
 
-    let url = `${URL_SERVICIOS}/crearMultimedia`;
-
-    parametros = parametros.append('descripcion', multimedia.descripcion);
-    parametros = parametros.append('url', multimedia.url); 
-
+    let url = `${URL_SERVICIOS}/multimedia/crearMultimedia`;
     
     const body = {
       descripcion:multimedia.descripcion,
       url:multimedia.url,
     };
 
-      console.log(body)
 
     return this.http.post(url, body).pipe(map((data) => data));
 

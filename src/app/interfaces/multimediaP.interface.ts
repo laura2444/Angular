@@ -11,3 +11,9 @@ export interface MultimediaPelicula {
       url: string;
     };
   }
+
+export interface MultimediaPeliculaSolo {
+  _id: string;
+  peliculas_id: string;
+  imagenes_id: string;
+}
