@@ -7,6 +7,7 @@ import { Pelicula } from '../interfaces/pelicula.interface';
 import { URL_SERVICIOS } from '../config/utl.servicios';
 import { map } from 'rxjs';
 import { MultimediaHeroe, MultimediaHeroeSolo } from '../interfaces/multimediaH.interface';
+import { Casting } from '../interfaces/casting.interface'
 import { MultimediaHeroeComponent } from '../components/multimedia-heroe/multimedia-heroe.component';
 
 @Injectable({
@@ -348,6 +349,80 @@ crud_multimedia(unMultimedia: Multimedia, unaAccion: string):any{
   if(unaAccion === 'eliminar'){
     console.log("dato enviados eliminar "+ unMultimedia._id)  
       let url = `${URL_SERVICIOS}/multimedia/eliminar/${unMultimedia._id}`;
+
+      return this.http.delete(url).pipe(
+        map((data) => {
+          return data;
+        })
+      );
+
+  }
+
+}
+
+
+////////////////////////////////CASTING PELICULA 
+
+getCastingPelicula(): any {  
+  let url = `${URL_SERVICIOS}/cast/obtenerNombres`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('DATOS Casting', data); 
+      return data;  
+    })
+  );
+}
+
+getCastingPeliculaID(idCastingPelicula : any): any{
+  let url = `${URL_SERVICIOS}/cast/obtenerID/${idCastingPelicula}`     
+  return this.http.get(url).pipe(  
+    map((data) => { 
+      console.log('DATOS CastingID', data); 
+      return data;  
+    })
+  );
+
+}
+
+crud_castingPelicula(unCast: Casting, unaAccion: string):any{
+
+  if ( unaAccion === 'insertar'){
+
+    let url = `${URL_SERVICIOS}/cast/crearCasting`;
+    
+    const body = {
+      heroes_id:unCast.heroes_id,
+      peliculas_id:unCast.peliculas_id,
+      personaje:unCast.personaje
+    };
+    console.log(body)
+
+
+    return this.http.post(url, body).pipe(map((data) => data));
+
+  }
+
+
+  if(unaAccion === 'modificar'){
+    
+    console.log('Datos antes de actualizar:', unCast);
+
+    let url = `${URL_SERVICIOS}/cast/actualizar/${unCast}`;
+
+    const body = {
+      heroes_id:unCast.heroes_id,
+      peliculas_id:unCast.peliculas_id,
+      personaje:unCast.personaje
+    };
+    console.log(body)
+
+    return this.http.put(url, body).pipe(map((data) => data));
+
+  }
+
+  if(unaAccion === 'eliminar'){
+    console.log("dato enviados eliminar "+ unCast._id)  
+      let url = `${URL_SERVICIOS}/cast/eliminar/${unCast._id}`;
 
       return this.http.delete(url).pipe(
         map((data) => {
