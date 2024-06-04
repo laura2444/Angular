@@ -8,6 +8,7 @@ export interface Casting{
     peliculas_id: {
         _id: string;
         titulo: string;
+        img: string;
     };
 }
 

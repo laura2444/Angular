@@ -9,18 +9,21 @@ import { MultimediaListaComponent } from './components/multimedia-lista/multimed
 import { MultimediaHeroeComponent } from './components/multimedia-heroe/multimedia-heroe.component';
 import { PeliculaListComponent } from './components/pelicula-list/pelicula-list.component'
 import { PeliculaEditComponent } from './components/pelicula-edit/pelicula-edit.component'
+import { CastingPeliculaComponent } from './components/casting-pelicula/casting-pelicula.component'
 
 const routes: Routes = [
   {path: 'hogar',component: HomeComponent},
   {path: 'home',component: HomeComponent},
-  {path: 'heroes',component: HeroesListComponent}, //FUNCIONA
+  {path: 'heroes',component: HeroesListComponent}, 
   {path: 'heroeedit/:idheroe',component: HeroeEditComponent},
-  {path: 'multimediaPelicula',component: MultimediaPeliculaComponent}, //FUNCIONA
-  {path: 'ListaM',component: MultimediaListaComponent }, //NO FUNCIONA
+  {path: 'multimediaPelicula',component: MultimediaPeliculaComponent}, 
+  {path: 'ListaM',component: MultimediaListaComponent }, 
   {path: 'multimedia/:idImagen',component: MultimediaComponent},
   {path: 'multimediaHeroe/:unHeroe',component: MultimediaHeroeComponent},
   {path: 'ListaP', component: PeliculaListComponent},
   {path: 'peliculaEdit/:idPelicula', component: PeliculaEditComponent},
+  {path: 'CastingPelicula', component: CastingPeliculaComponent},
+  
   
   
 

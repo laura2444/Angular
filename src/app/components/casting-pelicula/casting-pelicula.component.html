@@ -1,0 +1,21 @@
+<div class="container mt-4" >
+
+  <!-- Grid de Multimedia -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    <ng-container *ngFor="let cast of Castings; let i = index">
+      <div class="col mb-4">
+        <div class="card h-100">
+          <img [src]="cast.peliculas_id.img" class="card-img-top" alt="{{ cast.peliculas_id.img }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ cast.peliculas_id.titulo }}</h5>
+            <p class="card-text">Personaje {{ cast.heroes_id.nombre }}</p>
+          </div>
+          <div class="card-footer text-center">
+            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" >Eliminar Casting</button>
+            <button type="button" class="btn btn-sm btn-outline-success w-50" >Editar Información</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

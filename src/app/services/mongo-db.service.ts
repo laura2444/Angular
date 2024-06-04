@@ -391,8 +391,8 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
     let url = `${URL_SERVICIOS}/cast/crearCasting`;
     
     const body = {
-      heroes_id:unCast.heroes_id,
-      peliculas_id:unCast.peliculas_id,
+      heroes_id:unCast.heroes_id._id,
+      peliculas_id:unCast.peliculas_id._id,
       personaje:unCast.personaje
     };
     console.log(body)
@@ -410,8 +410,8 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
     let url = `${URL_SERVICIOS}/cast/actualizar/${unCast}`;
 
     const body = {
-      heroes_id:unCast.heroes_id,
-      peliculas_id:unCast.peliculas_id,
+      heroes_id:unCast.heroes_id._id,
+      peliculas_id:unCast.peliculas_id._id,
       personaje:unCast.personaje
     };
     console.log(body)
