@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+/* Cambiar fondo de toda la página */
+body {
+  background-color: #1c1c1c; /* color de fondo que quieras */
+  color: #fff; /* opcional, para texto claro sobre fondo oscuro */
+  min-height: 100vh; /* asegura que cubra toda la altura */
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

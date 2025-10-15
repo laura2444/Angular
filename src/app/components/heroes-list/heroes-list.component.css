@@ -1,3 +1,187 @@
-.img-thumb {
-    width: 90px;
+
+.container {
+  padding-bottom: 3rem;
+}
+
+/* Botones principales */
+.modern-btn-return, .modern-btn-new {
+  background: linear-gradient(45deg, #6c757d, #495057);
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s;
+}
+
+.modern-btn-return:hover, .modern-btn-new:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(100, 100, 100, 0.5);
+  background: linear-gradient(45deg, #495057, #6c757d);
+  color: white;
+}
+
+.modern-btn-new {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+}
+
+.modern-btn-new:hover {
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  box-shadow: 0 4px 15px rgba(255, 75, 43, 0.6);
+}
+
+/* Tarjetas modernas */
+.modern-card {
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modern-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 65, 108, 0.4);
+}
+
+.modern-card .card-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.modern-card:hover .card-img {
+  filter: brightness(0.5);
+}
+
+/* Overlay al hover */
+.overlay {
+  position: relative;
+  width: 100%;
+  background: #1c1c1c;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  transition: all 0.3s;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ff416c;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #e0e0e0;
+}
+
+.bio-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #bbb;
+  margin: 0.8rem 0;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botones overlay */
+.overlay-btn {
+  opacity: 0.9;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.overlay-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-success {
+  background-color: #27ae60;
+}
+
+.btn-success:hover {
+  background-color: #229954;
+}
+
+.btn-primary {
+  background-color: #3498db;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+  .modern-card .card-img {
+    height: 380px;
+  }
+}
+
+@media (max-width: 992px) {
+  .modern-card .card-img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-card .card-img {
+    height: 300px;
+  }
+  
+  .overlay {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .overlay-btn {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .modern-card .card-img {
+    height: 180px;
+  }
+  
+  .overlay {
+    padding: 0.8rem;
+  }
+  
+  .bio-text {
+    font-size: 0.8rem;
+    max-height: 40px;
+  }
+  
+  .d-flex.gap-2 {
+    gap: 0.3rem !important;
+  }
 }

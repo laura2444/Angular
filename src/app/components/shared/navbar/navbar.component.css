@@ -1,0 +1,58 @@
+/* Navbar general */
+.navbar-modern {
+  background-color: #141414; /* fondo oscuro uniforme */
+  padding: 0.8rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Brand */
+.navbar-modern .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.navbar-modern .navbar-brand:hover {
+  color: #ff416c;
+}
+
+/* Links principales */
+.navbar-modern .nav-link {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 1.2rem; /* mayor espaciado */
+  transition: color 0.3s, transform 0.2s;
+}
+
+.navbar-modern .nav-link:hover {
+  color: #ff416c;
+  transform: scale(1.05);
+}
+
+/* Link activo */
+.navbar-modern .nav-link.active {
+  color: #ff4b2b;
+  font-weight: bold;
+}
+
+/* Dropdowns */
+.dropdown-menu-modern {
+  background-color: #1c1c1c;
+  border: none;
+  padding: 0.5rem 0;
+}
+
+.dropdown-menu-modern .dropdown-item {
+  color: #ccc;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu-modern .dropdown-item:hover {
+  background-color: #ff4b2b20;
+  color: #ff4b2b;
+}

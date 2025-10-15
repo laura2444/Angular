@@ -1,78 +1,131 @@
-<div class="container mt-4">
+
+<div class="container mt-5">
+
+  <h1 class="text-white mb-5 text-center" style="font-weight: bold; font-size: 2.5rem;">
+    <i class="fa fa-film"></i> Multimedia de Películas
+  </h1>
+
   <!-- Selector de Películas -->
-  <div class="mb-4">
-    <label for="peliculaSeleccionada" class="form-label"><b>Selecciona una Película</b></label>
-    <select id="peliculaSeleccionada" class="form-select" [(ngModel)]="peliculaSeleccionada" (change)="clasificarPeliculas()">
-      <option value="">Todas</option>
-      <option *ngFor="let titulo of titulosUnicos" [value]="titulo">
-        {{ titulo }}
-      </option>
-    </select>
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-6">
+      <label for="peliculaSeleccionada" class="form-label text-white"><b>Selecciona una Película</b></label>
+      <select 
+        id="peliculaSeleccionada" 
+        class="form-select bg-secondary text-white border-0" 
+        [(ngModel)]="peliculaSeleccionada" 
+        (change)="clasificarPeliculas()"
+      >
+        <option value="">Todas las películas</option>
+        <option *ngFor="let titulo of titulosUnicos" [value]="titulo">
+          {{ titulo }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Botón para desplegar/ocultar formulario -->
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-outline-light btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#multimediaForm" aria-expanded="false" aria-controls="multimediaForm">
+      <i class="fa fa-plus"></i> Agregar Multimedia
+    </button>
+  </div>
+
+  <!-- Formulario colapsable -->
+  <div class="collapse mb-5" id="multimediaForm">
+    <div class="p-4 shadow-lg rounded bg-dark text-white">
+      <h5 class="mb-4"><i class="fa fa-plus-circle"></i> Crear Nueva Multimedia</h5>
+      <form (ngSubmit)="crearMultimediaPelicula()">
+        
+        <!-- Película -->
+        <div class="mb-3">
+          <label for="pelicula" class="form-label"><b>Película</b></label>
+          <select 
+            id="pelicula" 
+            class="form-select bg-secondary text-white border-0" 
+            [(ngModel)]="EnviarMultimediaPelicula.peliculas_id" 
+            name="peliculas_id" 
+            required
+          >
+            <option value="" disabled selected>Selecciona una película</option>
+            <option *ngFor="let pelicula of peliculas" [value]="pelicula._id">
+              {{ pelicula.titulo }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-3">
+          <label for="descripcion" class="form-label"><b>Descripción</b></label>
+          <input
+            id="descripcion"
+            [(ngModel)]="crearMultimedias.descripcion"
+            name="descripcion"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="Descripción de la imagen"
+            required
+          />
+        </div>
+
+        <!-- URL de la Imagen -->
+        <div class="mb-3">
+          <label for="url" class="form-label"><b>URL de la Imagen</b></label>
+          <input
+            id="url"
+            [(ngModel)]="crearMultimedias.url"
+            name="url"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="URL de la imagen"
+            required
+          />
+          <img [src]="crearMultimedias.url" class="img-thumbnail mt-2 rounded" *ngIf="crearMultimedias.url" />
+        </div>
+
+        <button type="submit" class="btn modern-btn-sm mt-3">
+          <i class="fa fa-save"></i> Crear Multimedia
+        </button>
+      </form>
+    </div>
   </div>
 
   <!-- Grid de Multimedia -->
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-    <ng-container *ngFor="let multimedia of MultimediaPeliculas; let i = index">
-      <div class="col mb-4">
-        <div class="card h-100">
-          <img [src]="multimedia.imagenes_id.url" class="card-img-top" alt="{{ multimedia.peliculas_id.titulo }}">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <ng-container *ngFor="let multimedia of MultimediaPeliculas">
+      <div class="col">
+        <div class="card modern-card h-100 text-white overflow-hidden">
+          <!-- Imagen -->
+          <img [src]="multimedia.imagenes_id.url" class="card-img" alt="{{ multimedia.peliculas_id.titulo }}">
+          
+          <!-- Información -->
           <div class="card-body">
             <h5 class="card-title">{{ multimedia.peliculas_id.titulo }}</h5>
-            <p class="card-text">{{ multimedia.imagenes_id.descripcion }}</p>
-            <p class="card-text text-muted" style="font-size: small; text-align: right;">
-              {{ multimedia.peliculas_id.fecha_lanzamiento | date:'yyyy-MM-dd' }}
+            <p class="card-text small">{{ multimedia.imagenes_id.descripcion }}</p>
+            <p class="card-text date-text">
+              <i class="fa fa-calendar"></i> {{ multimedia.peliculas_id.fecha_lanzamiento | date:'yyyy-MM-dd' }}
             </p>
           </div>
-          <div class="card-footer text-center">
-            <button type="button" class="btn btn-sm btn-outline-danger w-50 me-2" (click)="eliminarMultimediaPelicula(multimedia)">Eliminar</button>
-            <button type="button" class="btn btn-sm btn-outline-success w-50" (click)="imagenesPeliculas(multimedia.imagenes_id._id)">Editar Imagen</button>
+          
+          <!-- Botones -->
+          <div class="card-footer">
+            <button 
+              type="button" 
+              class="btn btn-sm btn-danger overlay-btn" 
+              (click)="eliminarMultimediaPelicula(multimedia)"
+            >
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-sm btn-success overlay-btn" 
+              (click)="imagenesPeliculas(multimedia.imagenes_id._id)"
+            >
+              <i class="fa fa-edit"></i> Editar
+            </button>
           </div>
         </div>
       </div>
     </ng-container>
   </div>
 
-  <hr>
-
-  <!-- Formulario para crear nueva multimediaPelicula -->
-  <form (ngSubmit)="crearMultimediaPelicula()" class="mt-4">
-    <div class="mb-3">
-      <label for="pelicula" class="form-label"><b>Película</b></label>
-      <select id="pelicula" class="form-select" [(ngModel)]="EnviarMultimediaPelicula.peliculas_id" name="peliculas_id" required>
-        <option value="" disabled selected>Selecciona una película</option>
-        <option *ngFor="let pelicula of peliculas" [value]="pelicula._id">
-          {{ pelicula.titulo }}
-        </option>
-      </select>
-    </div>
-
-    <div class="mb-3">
-      <label for="descripcion" class="form-label"><b>Descripción</b></label>
-      <input
-        id="descripcion"
-        [(ngModel)]="crearMultimedias.descripcion"
-        name="descripcion"
-        type="text"
-        class="form-control"
-        placeholder="Descripción"
-        required
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="url" class="form-label"><b>URL de la Imagen</b></label>
-      <input
-        id="url"
-        [(ngModel)]="crearMultimedias.url"
-        name="url"
-        type="text"
-        class="form-control"
-        placeholder="URL de la imagen"
-        required
-      />
-      <img [src]="crearMultimedias.url" class="img-thumbnail mt-2" *ngIf="crearMultimedias.url" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
-  </form>
 </div>

@@ -1,4 +1,5 @@
-<div class="container-fluid">
+
+<div class="container-fluid p-0">
   <div class="carousel-container">
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
       <div class="carousel-indicators">
@@ -8,18 +9,24 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-          <img src="assets/imagenes/Batman.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
+          <img src="assets/imagenes/batman.jpg" class="d-block w-100" alt="Batman">
+          <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+            <h1 class="display-4 fw-bold">Bienvenido al Mundo de los Superhéroes</h1>
+            <p class="lead">Descubre historias épicas de tus héroes favoritos</p>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
-          <img src="assets/imagenes/aquaman.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item" data-bs-interval="10000">
+          <img src="assets/imagenes/advengers.jpg" class="d-block w-100" alt="Aquaman">
+          <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+            <h1 class="display-4 fw-bold">Explora Películas Épicas</h1>
+            <p class="lead">Las mejores producciones de superhéroes</p>
           </div>
         </div>
-        <div class="carousel-item">
-          <img src="assets/imagenes/hulk.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item" data-bs-interval="10000">
+          <img src="assets/imagenes/spider.jpg" class="d-block w-100" alt="Hulk">
+          <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+            <h1 class="display-4 fw-bold">Galería de Imágenes</h1>
+            <p class="lead">Visualiza momentos icónicos de acción</p>
           </div>
         </div>
       </div>
@@ -35,36 +42,45 @@
   </div>
 </div>
 
+
+
 <div class="container">
   <div class="crud-section">
     <div class="row">
       <div class="col-md-4">
-        <div class="card">
-          <img src="assets/imagenes/Batman.jpg" class="card-img-top" alt="Heroe">
+        <div class="card modern-home-card">
+          <img src="assets/imagenes/all.jpg" class="card-img-top" alt="Heroe">
           <div class="card-body">
             <h5 class="card-title">Heroes</h5>
             <p class="card-text">Gestiona todos tus héroes favoritos desde aquí.</p>
-            <a href="/heroes" class="btn btn-primary">Ir a Héroes</a>
+              <div class="btn-group-card">
+                <a href="/heroes" class="modern-btn-sm btn-red">Ir a Heroes</a>
+              </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <img src="assets/imagenes/spider.jpeg" class="card-img-top" alt="Peliculas">
+        <div class="card modern-home-card">
+          <img src="assets/imagenes/movies.webp" class="card-img-top" alt="Peliculas">
           <div class="card-body">
             <h5 class="card-title">Peliculas</h5>
             <p class="card-text">Administra y descubre todas las películas.</p>
-            <a href="/ListaP" class="btn btn-primary">Ir a Películas</a>
+              <div class="btn-group-card">
+                <a href="/ListaP" class="modern-btn-sm btn-red">Ir a Películas</a>
+              </div>
           </div>
+          
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <img src="assets/imagenes/hulk.jpg" class="card-img-top" alt="Imagenes">
+        <div class="card modern-home-card">
+          <img src="assets/imagenes/imagenes.jpg" class="card-img-top" alt="Imagenes">
           <div class="card-body">
             <h5 class="card-title">Imágenes</h5>
             <p class="card-text">Explora mágenes de tus heroes y peliculas favoritos.</p>
-            <a href="/ListaM" class="btn btn-primary">Ir a Imágenes</a>
+            <div class="btn-group-card">
+                <a href="/ListaM" class="modern-btn-sm btn-red">Ir a Imagenes</a>
+              </div>
           </div>
         </div>
       </div>

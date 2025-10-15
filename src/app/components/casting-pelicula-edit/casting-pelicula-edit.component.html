@@ -1,32 +1,72 @@
-<div class="col-12 mt-4 px-5"> 
-    <form (ngSubmit)="actualizarCasting()">
 
-        <div class="mb-3">
-            <label for="heroe" class="form-label"><b>Heroes</b></label>
-            <select id="heroe" class="form-select" [(ngModel)]="unCasting.heroes_id._id" name="heroe" required>
-              <option value="" disabled selected>Selecciona una Heroe</option>
-              <option *ngFor="let heroe of Heroes" [value]="heroe._id">
-                {{ heroe.nombre }}
-              </option>
-            </select>
-          </div>
+<div class="container mt-5">
+  <h1 class="text-white mb-5 text-center" style="font-weight: bold; font-size: 2.5rem;">
+    <i class="fa fa-theater-masks"></i> Editar Casting
+  </h1>
 
-      <div class="mb-3">
-        <label for="personaje" class="form-label"><b>Personaje</b></label>
-        <input id="personaje" [(ngModel)]="unCasting.personaje" name="personaje" type="text" class="form-control" placeholder="descripcion" required />
-      </div>
-  
-      <div class="mb-3">
-        <label for="pelicula" class="form-label"><b>Película</b></label>
-        <select id="pelicula" class="form-select" [(ngModel)]="unCasting.peliculas_id._id" name="peliculas_id" required>
-          <option value="" disabled selected>Selecciona una película</option>
-          <option *ngFor="let pelicula of Peliculas" [value]="pelicula._id">
-            {{ pelicula.titulo }}
-          </option>
-        </select>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form (ngSubmit)="actualizarCasting()" class="modern-form shadow-lg rounded p-5">
 
-  
-      <button type="submit" class="btn btn-primary">Crear Película</button>
-    </form>
+        <!-- Seleccionar Héroe -->
+        <div class="mb-4">
+          <label for="heroe" class="form-label"><b>Héroe</b></label>
+          <select 
+            id="heroe" 
+            class="form-select bg-secondary text-white border-0" 
+            [(ngModel)]="unCasting.heroes_id._id" 
+            name="heroe" 
+            required
+          >
+            <option value="" disabled selected>Selecciona un héroe</option>
+            <option *ngFor="let heroe of Heroes" [value]="heroe._id">
+              {{ heroe.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Nombre del Personaje -->
+        <div class="mb-4">
+          <label for="personaje" class="form-label"><b>Personaje</b></label>
+          <input 
+            id="personaje" 
+            [(ngModel)]="unCasting.personaje" 
+            name="personaje" 
+            type="text" 
+            class="form-control bg-secondary text-white border-0" 
+            placeholder="Nombre del personaje o actor" 
+            required 
+          />
+        </div>
+
+        <!-- Seleccionar Película -->
+        <div class="mb-4">
+          <label for="pelicula" class="form-label"><b>Película</b></label>
+          <select 
+            id="pelicula" 
+            class="form-select bg-secondary text-white border-0" 
+            [(ngModel)]="unCasting.peliculas_id._id" 
+            name="peliculas_id" 
+            required
+          >
+            <option value="" disabled selected>Selecciona una película</option>
+            <option *ngFor="let pelicula of Peliculas" [value]="pelicula._id">
+              {{ pelicula.titulo }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Botón Submit -->
+        <div class="d-grid gap-2">
+          <button 
+            type="submit" 
+            class="btn modern-btn-submit"
+          >
+            <i class="fa fa-save"></i> Guardar Casting
+          </button>
+        </div>
+
+      </form>
+    </div>
   </div>
+</div>

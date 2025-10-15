@@ -6,7 +6,7 @@ nuestros servicios estan de forma local
 */
 
 //para desarrollo
-export const URL_SERVICIOS= "http://localhost:4000"; 
+export const URL_SERVICIOS= "https://base-datos2-1.onrender.com"; 
 
 
 

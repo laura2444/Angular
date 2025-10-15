@@ -1,72 +1,84 @@
-<p>pelicula-edit works!</p>
 
-<div class="container">
-    <form (ngSubmit)="guardarPelicula()" #forma="ngForm">
+<div class="container mt-5">
+  <h1 class="text-white mb-5 text-center" style="font-weight: bold; font-size: 2.5rem;">
+    <i class="fa fa-film"></i> Editar Película
+  </h1>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form (ngSubmit)="guardarPelicula()" #forma="ngForm" class="modern-form shadow-lg rounded p-5">
         
-        <div class="form-group">
-            <label><b>ID</b></label>
-            <input
-              [(ngModel)]="unPelicula._id"
-              name="id"
-              type="text"
-              class="form-control"
-              placeholder="Id"
-              required
-              disabled
-            />
-          </div>
+        <!-- Título -->
+        <div class="mb-4">
+          <label for="titulo" class="form-label"><b>Título</b></label>
+          <input
+            id="titulo"
+            [(ngModel)]="unPelicula.titulo"
+            name="titulo"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="Título de la película"
+            required
+          />
+        </div>
 
-          <div class="form-group">
-            <label><b>titulo</b></label>
-            <input
-              [(ngModel)]="unPelicula.titulo"
-              name="titulo"
-              type="text"
-              class="form-control"
-              placeholder="titulo"
-              required
-            />
-          </div>
-         
-          <div class="form-group">
-            <label><b>descripcion</b></label>
-            <input
-              [(ngModel)]="unPelicula.descripcion"
-              name="descripcion"
-              type="text"
-              class="form-control"
-              placeholder="descripcion"
-              required
-            />
-            
-          </div>
-  
-  
-          <div class="form-group">
-            <label><b>Imagen</b></label>
-            <input
-              [(ngModel)]="unPelicula.img"
-              name="img"
-              type="text"
-              class="form-control"
-              placeholder="Imagen"
-              required
-            />
-            <img [src]="unPelicula.img" class="img-thumb" />
-          </div>
+        <!-- Descripción -->
+        <div class="mb-4">
+          <label for="descripcion" class="form-label"><b>Descripción</b></label>
+          <input
+            id="descripcion"
+            [(ngModel)]="unPelicula.descripcion"
+            name="descripcion"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="Descripción de la película"
+            required
+          />
+        </div>
 
-          <div class="form-group">
-            <label><b>fecha</b></label>
-            <input
-              [(ngModel)]="unPelicula.fecha_lanzamiento"
-              name="fecha"
-              type="text"
-              class="form-control"
-              placeholder="fecha"
-              required
-            />
+        <!-- Imagen -->
+        <div class="mb-4">
+          <label for="img" class="form-label"><b>Imagen</b></label>
+          <input
+            id="img"
+            [(ngModel)]="unPelicula.img"
+            name="img"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="URL de la imagen"
+            required
+          />
+          <div class="mt-3 text-center">
+            <img [src]="unPelicula.img" class="img-preview rounded shadow-sm" alt="Preview" />
           </div>
-  
-        <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        </div>
+
+        <!-- Fecha de Lanzamiento -->
+        <div class="mb-4">
+          <label for="fecha" class="form-label"><b>Fecha de Lanzamiento</b></label>
+          <input
+            id="fecha"
+            [(ngModel)]="unPelicula.fecha_lanzamiento"
+            name="fecha"
+            type="text"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="Ej: 2024-01-15"
+            required
+          />
+        </div>
+
+        <!-- Botón Submit -->
+        <div class="d-grid gap-2">
+          <button
+            [disabled]="!forma.valid"
+            type="submit"
+            class="btn modern-btn-submit"
+          >
+            <i class="fa fa-save"></i> Guardar Cambios
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>

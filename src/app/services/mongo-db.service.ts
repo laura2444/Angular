@@ -26,7 +26,7 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
 
     return this.http.get(url).pipe(  
       map((data) =>{ //mapea datos, funcion de flecha para
-        console.log('DATOS',data); //imprimir datos en consola
+        //console.log('DATOS',data); //imprimir datos en consola
         return data; //retornar datos 
       })
     );
@@ -39,7 +39,7 @@ export class MongoDBService {  //llamar al mongo db sercies en heroes list
 
     return this.http.get(url).pipe( //Realiza una solicitud HTTP GET a la URL especificada, llamo a pipe para usar map
       map((data) =>{
-        console.log('DATOS',data);
+        //console.log('DATOS',data);
         return data;
       })
     );
@@ -123,7 +123,7 @@ getMultimediaPeliculas(): any {
   let url = `${URL_SERVICIOS}/multimediaP`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('DATOS', data); 
+      //console.log('DATOS', data); 
       return data;  
     })
   );
@@ -133,7 +133,7 @@ getMultimediaPeliculasTitulo(titulo: string): any {
   let url = `${URL_SERVICIOS}/multimediaP/titulo/${titulo}`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('Peliculas con clasificación: ', data); 
+      //console.log('Peliculas con clasificación: ', data); 
       return data;  
     })
   );
@@ -151,7 +151,7 @@ crud_multimediaPelicula(multimediaP : MultimediaPelicula | MultimediaPeliculaSol
       peliculas_id:multimediaP.peliculas_id,
       imagenes_id:multimediaP.imagenes_id,
     };
-    console.log(body)
+    //console.log(body)
 
     return this.http.post(url, body).pipe(map((data) => data));
 
@@ -179,7 +179,7 @@ getPeliculas(): any {
   let url = `${URL_SERVICIOS}/peliculas`
   return this.http.get(url).pipe(
     map((data) => {
-      console.log('DATOS peliculas', data);
+      //console.log('DATOS peliculas', data);
       return data;
     })
   );
@@ -189,7 +189,7 @@ getPeliculasID(idPelicula: any): any {
   let url = `${URL_SERVICIOS}/peliculas/${idPelicula}`
   return this.http.get(url).pipe(
     map((data) => {
-      console.log('DATOS pelicula por ID', data);
+      //console.log('DATOS pelicula por ID', data);
       return data;
     })
   );
@@ -217,7 +217,7 @@ crud_Peliculas(unaPelicula: Pelicula, unaAccion: string): any {
 
   if (unaAccion === 'modificar') {
 
-    console.log('Datos antes de actualizar:', unaPelicula);
+    //console.log('Datos antes de actualizar:', unaPelicula);
 
     let url = `${URL_SERVICIOS}/peliculas/actualizarP/${unaPelicula._id}`;
 
@@ -227,14 +227,14 @@ crud_Peliculas(unaPelicula: Pelicula, unaAccion: string): any {
       fecha_lanzamiento: unaPelicula.fecha_lanzamiento,
       img: unaPelicula.img,
     };
-    console.log(body)
+    //console.log(body)
 
     return this.http.put(url, body).pipe(map((data) => data));
 
   }
 
   if (unaAccion === 'eliminar') {
-    console.log("dato enviados eliminar " + unaPelicula._id)
+    //console.log("dato enviados eliminar " + unaPelicula._id)
     let url = `${URL_SERVICIOS}/peliculas/eliminarP/${unaPelicula._id}`;
 
     return this.http.delete(url).pipe(
@@ -254,7 +254,7 @@ getMultimediaHeroes(heroes_id: string): any {
   let url = `${URL_SERVICIOS}/multimediaH/heroeM/${heroes_id}`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('heroes: ', data); 
+      //console.log('heroes: ', data); 
       return data;  
     })
   );
@@ -265,7 +265,7 @@ crudMultimediaHeroes(unmultimediaHeroe:MultimediaHeroe| MultimediaHeroeSolo,unaA
     let url= `${URL_SERVICIOS}/multimediaH/eliminar/${unmultimediaHeroe._id}`
     return this.http.delete(url).pipe(
       map((data)=>{
-        console.log('eliminado', data)
+        //console.log('eliminado', data)
         return data
       })
     );
@@ -278,7 +278,7 @@ crudMultimediaHeroes(unmultimediaHeroe:MultimediaHeroe| MultimediaHeroeSolo,unaA
       heroes_id: unmultimediaHeroe.heroes_id,
       imagenes_id: unmultimediaHeroe.imagenes_id
     };
-    console.log(bodyH)
+    //console.log(bodyH)
     return this.http.post(url,bodyH). pipe(map((data) =>data));
   }
 
@@ -294,7 +294,7 @@ getMultimedia(): any {
   let url = `${URL_SERVICIOS}/multimedia`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('DATOS', data); 
+      //console.log('DATOS', data); 
       return data;  
     })
   );
@@ -307,7 +307,7 @@ getUnMultimediaID(idMultimedia:string):any{
   let url = `${URL_SERVICIOS}/multimedia/obtener/${idMultimedia}`;
   return this.http.get<any>(url).pipe(
     map((data) => {
-      console.log('DATA INDEPENDIENTE', data);
+      //console.log('DATA INDEPENDIENTE', data);
       return data;  })
   );
 }
@@ -322,7 +322,7 @@ crud_multimedia(unMultimedia: Multimedia, unaAccion: string):any{
       descripcion:unMultimedia.descripcion,
       url:unMultimedia.url,
     };
-    console.log(body)
+    //console.log(body)
 
 
     return this.http.post(url, body).pipe(map((data) => data));
@@ -340,14 +340,14 @@ crud_multimedia(unMultimedia: Multimedia, unaAccion: string):any{
       descripcion:unMultimedia.descripcion,
       url:unMultimedia.url,
     };
-    console.log(body)
+    //console.log(body)
 
     return this.http.put(url, body).pipe(map((data) => data));
 
   }
 
   if(unaAccion === 'eliminar'){
-    console.log("dato enviados eliminar "+ unMultimedia._id)  
+    //console.log("dato enviados eliminar "+ unMultimedia._id)  
       let url = `${URL_SERVICIOS}/multimedia/eliminar/${unMultimedia._id}`;
 
       return this.http.delete(url).pipe(
@@ -367,7 +367,7 @@ getCastingPelicula(): any {
   let url = `${URL_SERVICIOS}/cast/obtenerNombres`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('DATOS Casting', data); 
+      //console.log('DATOS Casting', data); 
       return data;  
     })
   );
@@ -377,7 +377,7 @@ getCastingPeliculaID(idCastingPelicula : any): any{
   let url = `${URL_SERVICIOS}/cast/obtenerID/${idCastingPelicula}`     
   return this.http.get(url).pipe(  
     map((data) => { 
-      console.log('DATOS CastingID', data); 
+      //console.log('DATOS CastingID', data); 
       return data;  
     })
   );
@@ -395,7 +395,7 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
       peliculas_id:unCast.peliculas_id._id,
       personaje:unCast.personaje
     };
-    console.log(body)
+    //console.log(body)
 
 
     return this.http.post(url, body).pipe(map((data) => data));
@@ -405,7 +405,7 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
 
   if(unaAccion === 'modificar'){
     
-    console.log('Datos antes de actualizar:', unCast);
+    //console.log('Datos antes de actualizar:', unCast);
 
     let url = `${URL_SERVICIOS}/cast/actualizar/${unCast._id}`;
 
@@ -414,14 +414,14 @@ crud_castingPelicula(unCast: Casting, unaAccion: string):any{
       peliculas_id:unCast.peliculas_id._id,
       personaje:unCast.personaje
     };
-    console.log(body)
+    //console.log(body)
 
     return this.http.put(url, body).pipe(map((data) => data));
 
   }
 
   if(unaAccion === 'eliminar'){
-    console.log("dato enviados eliminar "+ unCast._id)  
+    //console.log("dato enviados eliminar "+ unCast._id)  
       let url = `${URL_SERVICIOS}/cast/eliminar/${unCast._id}`;
 
       return this.http.delete(url).pipe(

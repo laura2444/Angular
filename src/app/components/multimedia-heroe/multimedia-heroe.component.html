@@ -1,57 +1,71 @@
-<div class="container mt-4">
 
+<div class="container mt-5">
 
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-    <ng-container *ngFor="let multimedia of MultimediaHeroes; let i = index">
-      <div class="col mb-4">
-        <div class="card h-100">
+  <!-- Botón para desplegar/ocultar formulario -->
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-outline-light btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#multimediaForm" aria-expanded="false" aria-controls="multimediaForm">
+      Agregar Nueva Multimedia
+    </button>
+  </div>
+
+  <!-- Formulario colapsable -->
+  <div class="collapse" id="multimediaForm">
+    <div class="mt-3 p-4 shadow-lg rounded bg-dark text-white mb-5">
+      <form (ngSubmit)="crearMultimediaHeroe()">
+        <div class="mb-3">
+          <label for="descripcion" class="form-label"><b>Descripción</b></label>
+          <input 
+            id="descripcion" 
+            [(ngModel)]="crearMultimedias.descripcion" 
+            name="descripcion" 
+            type="text"
+            class="form-control bg-secondary text-white border-0" 
+            placeholder="Descripción" 
+            required 
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="url" class="form-label"><b>URL de la Imagen</b></label>
+          <input 
+            id="url" 
+            [(ngModel)]="crearMultimedias.url" 
+            name="url" 
+            type="text"
+            class="form-control bg-secondary text-white border-0" 
+            placeholder="URL de la imagen" 
+            required 
+          />
+          <img [src]="crearMultimedias.url" class="img-thumbnail mt-2 rounded" *ngIf="crearMultimedias.url" />
+        </div>
+
+        <button type="submit" class="btn modern-btn-sm mt-3">Crear Multimedia</button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Grid de Multimedia -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <ng-container *ngFor="let multimedia of MultimediaHeroes">
+      <div class="col">
+        <div class="card modern-card h-100 overflow-hidden">
+          <img [src]="multimedia.imagenes_id.url" class="card-img" alt="Imagen de Multimedia">
           <div class="card-body">
-            <h5 class="card-title">{{ multimedia.heroes_id.nombre }}</h5>
-            <p class="card-title">{{ multimedia.imagenes_id.descripcion }}</p>
-            <img [src]="multimedia.imagenes_id.url" class="card-img-top" alt="...">
-            <p class="card-text" style="font-size: small; text-align: right;">
-
-            </p>
+            <h5 class="card-title">{{ multimedia.imagenes_id.descripcion }}</h5>
+            <p class="card-subtitle">{{ multimedia.heroes_id.nombre }}</p>
           </div>
-          <div class="card-footer text-center">
-            <button type="button" class="btn btn-sm btn-outline-danger w-50 " (click)="eliminarMultimediaHeroe(multimedia)">Eliminar</button>
-            <button type="button" class="btn btn-sm btn-outline-success w-50" (click)="imagenesHeroes(multimedia.imagenes_id._id)">Editar Imagen</button>
-          </div>       
+          <div class="card-footer">
+            <button type="button" class="btn btn-sm btn-danger overlay-btn" (click)="eliminarMultimediaHeroe(multimedia)">
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
+            <button type="button" class="btn btn-sm btn-success overlay-btn" (click)="imagenesHeroes(multimedia.imagenes_id._id)">
+              <i class="fa fa-edit"></i> Editar
+            </button>
+          </div>
         </div>
       </div>
-      <div class="col mb-4" *ngIf="i % 4 === 3 || i === MultimediaHeroes.length - 1"></div>
     </ng-container>
   </div>
 
-  <form (ngSubmit)="crearMultimediaHeroe()" class="mt-4">
-
-    <div class="mb-3">
-      <label for="descripcion" class="form-label"><b>Descripción</b></label>
-      <input
-        id="descripcion"
-        [(ngModel)]="crearMultimedias.descripcion"
-        name="descripcion"
-        type="text"
-        class="form-control"
-        placeholder="Descripción"
-        required
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="url" class="form-label"><b>URL de la Imaagen</b></label>
-      <input
-        id="url"
-        [(ngModel)]="crearMultimedias.url"
-        name="url"
-        type="text"
-        class="form-control"
-        placeholder="URL de la imagen"
-        required
-      />
-      <img [src]="crearMultimedias.url" class="img-thumbnail mt-2" *ngIf="crearMultimedias.url" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Crear Multimedia Película</button>
-  </form>
 </div>
