@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: front-bd2
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    staticSite: false
+    routes:
+      - path: /api/*
+        destination: https://tu-backend.com
+      - path: /*
+        destination: /index.html

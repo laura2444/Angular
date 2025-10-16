@@ -4,10 +4,19 @@ const app = express();
 
 const distFolder = path.join(__dirname, 'dist/front-bd2/browser');
 
-app.use(express.static(distFolder, { maxAge: '1y', etag: false }));
+// Servir archivos estáticos
+app.use(express.static(distFolder, { 
+  maxAge: '1y', 
+  etag: false 
+}));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(distFolder, 'index.html'));
+// Redirigir todas las rutas al index.html (importante para Angular routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distFolder, 'index.html'), (err) => {
+    if (err) {
+      res.status(404).send('Not Found');
+    }
+  });
 });
 
 const PORT = process.env.PORT || 4000;
