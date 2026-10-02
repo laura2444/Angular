@@ -6,7 +6,7 @@ nuestros servicios estan de forma local
 */
 
 //para desarrollo
-export const URL_SERVICIOS= "https://base-datos2-1.onrender.com"; 
+export const URL_SERVICIOS= "https://server-production-efb97.up.railway.app"; 
 
 
 
